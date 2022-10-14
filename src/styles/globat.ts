@@ -7,11 +7,13 @@ export const globalStyles = globalCss({
   },
 
   body: {
-    '-webkit-font-smoothing': 'antialised'
+    backgroundColor: '$background',
+    color: '$accent',
+    '-webkit-font-smoothing': 'antialised',
   },
 
   'body, input, textarea, button': {
-    fontFamily: 'Roboto',
+    fontFamily: 'Poppins',
     fontWeight: 400,
   }
 })

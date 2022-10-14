@@ -12,8 +12,11 @@ export const {
 } = createStitches({
   theme: {
     colors: {
-      background: '#8267e6',
-      accent: '#fff'
+      background: '#fbeedb',
+      accent: '#230f04',
+      white: '#fff',
+      textBright: '#d7cdbe',
+      textGrey: '#c6c0b8'
     }
   }
 })
