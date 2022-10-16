@@ -12,6 +12,10 @@ export const Header = styled('header', {
   width: '100%',
 })
 
+export const ImageHome = styled('img', {
+
+})
+
 export const Link = styled('a', {
   fontSize: '0.9rem',
   textDecoration: 'none',
