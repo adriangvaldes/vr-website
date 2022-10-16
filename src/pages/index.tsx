@@ -1,21 +1,93 @@
-import { NavContainer, NavLink } from "../styles/pages/home";
+import {
+  Banner,
+  BottonDiv,
+  Card,
+  CardBackgroundImage,
+  CardsContainer,
+  CardsTecniqueContainer,
+  HeroContainer,
+  HeroDescription,
+  ImageCard,
+  NavContainer,
+  NavLink,
+  TecniqueCards,
+} from "../styles/pages/home";
+
+import meatTable1 from '../assets/wood/tabua1_carne.jpg'
 
 export default function Home() {
   return (
     <>
-      <NavContainer>
-        <NavLink>Catalogo</NavLink>
-        <NavLink>Parceiros</NavLink>
-        <NavLink>Encomendas</NavLink>
-        <NavLink>Sobre nós</NavLink>
-      </NavContainer>
-      <section className="heroSection">
-        <div className="">
-          <h1>Artesanato com madeira e costura de alto nivel</h1>
+      <HeroContainer>
+        {/* <NavContainer>
+          <NavLink>Catalogo</NavLink>
+          <NavLink>Parceiros</NavLink>
+          <NavLink>Encomendas</NavLink>
+          <NavLink>Sobre nós</NavLink>
+        </NavContainer> */}
+        <HeroDescription className="heroSection">
+          <h1>Artesanato com madeira e costura de alto nível</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, veniam dolores assumenda doloremque corrupti.</p>
           <button>Ir para catálogo</button>
-        </div>
-      </section>
+        </HeroDescription>
+      </HeroContainer>
+
+      <CardsContainer>
+        <Card>
+          <ImageCard src={meatTable1.src} />
+          <h1>Tecidos</h1>
+          <p>Tecidos feitos com as melhores telas, feitos com maestria e amor de alguem apaixonado por artes manuais</p>
+        </Card>
+        <Card>
+          <ImageCard src={meatTable1.src} />
+          <h1>Marcenaria</h1>
+          <p>Trabalhos em madeira feitos com precisão e carinho. Produtos unicos variados de mar</p>
+        </Card>
+        <Card>
+          <ImageCard src={meatTable1.src} />
+          <h1>Trabalho com Laser</h1>
+          <p>Personalização de peças de diferentes materiais, utilizando um laser de alta precisão</p>
+        </Card>
+      </CardsContainer>
+
+      <Banner>
+        <h1>" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "</h1>
+      </Banner>
+
+      <CardsTecniqueContainer>
+        <TecniqueCards>
+          <span>TÉCNICAS</span>
+          <CardBackgroundImage />
+          <section>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              ICONE_TO_DEFINE
+            </div>
+            <div>
+              <h1>Marchetaria</h1>
+              <p>Trabalhos em madeira de diferentes tonalidade para tornar cada peça unica e elegante. Toda a colagem e marcheteria é feita com cola Titebond 3 resistente a água e não toxica, para poder ser utilizada com alimentos. </p>
+            </div>
+          </section>
+        </TecniqueCards>
+        <TecniqueCards>
+          <span>TÉCNICAS</span>
+          <CardBackgroundImage />
+          <section>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              ICONE_TO_DEFINE
+            </div>
+            <div>
+              <h1>Inlay</h1>
+              <p>Incrustaçao de desenhos de madeiras de diferentes tonalidades. O acabamento é feito com oleo mineral e cera de abelha q sao os apropiados paracontato direto com alimentos. </p>
+            </div>
+          </section>
+        </TecniqueCards>
+      </CardsTecniqueContainer>
+
+      <BottonDiv>
+        <h1>Também trabalhamos com personalização de peças</h1>
+        <button>SAIBA MAIS</button>
+      </BottonDiv>
+
     </>
   )
 }
