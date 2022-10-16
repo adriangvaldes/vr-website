@@ -73,19 +73,19 @@ export const CardsContainer = styled('div', {
   gridAutoRows: '0.2fr',
   '& img': {
     maxWidth: '100%',
-    objectFit: 'contain',
   },
+  maxWidth: '80vw',
   gridAutoFlow: 'row',
   justifyItems: 'center',
-  padding: '0 1rem',
-  gridGap: '1.2rem',
+  padding: '0rem',
+  gridGap: '1.5rem',
 })
 
 export const CardsTecniqueContainer = styled('div', {
   display: 'grid',
   width: '80%',
   margin: '0 auto',
-  maxWidth: '1920px',
+  maxWidth: '1400px',
   justifyContent: 'center',
   gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
   gridAutoRows: '0.2fr',
@@ -102,25 +102,30 @@ export const CardsTecniqueContainer = styled('div', {
 export const Card = styled('div', {
   cursor: 'pointer',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
   flexDirection: 'column',
-  objectFit: 'cover',
   maxWidth: '30.25rem',
   maxHeight: '35rem',
   background: '$brown400',
-  padding: '1.5rem',
-  boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-  transition: 'transform .2s',
+  // padding: '1rem',
+  transition: 'all .2s',
+  boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+  '& img': {
+    objectFit: 'cover',
+    maxHeight: '300px',
+  },
   '& h1': {
     alignSelf: 'flex-start',
-    marginTop: '1.5rem',
+    margin: '2rem 1.5rem 0rem',
     fontSize: '1.5rem',
   },
   '& p': {
-    marginTop: '1rem'
+    margin: '1rem 1.5rem 2rem'
   },
   '&:hover': {
-    transform: 'scale(1.05)'
+    transform: 'scale(1.05)',
+    boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
   }
 })
 
@@ -133,7 +138,7 @@ export const Banner = styled('div', {
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundBlendMode: 'darken',
-  height: '350px',
+  maxHeight: '300px',
   width: '100%',
   maxWidth: '1920px',
   margin: '0 auto',
@@ -145,6 +150,7 @@ export const Banner = styled('div', {
     textAlign: 'center',
     margin: '0 2rem',
     fontSize: '1.5rem',
+    maxWidth: '1100px',
   },
   '@bp1': {
     fontSize: '1.5rem',
@@ -161,9 +167,9 @@ export const TecniqueCards = styled('div', {
   maxWidth: '40rem',
   maxHeight: '100rem',
   background: '$brown400',
+  boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
   // padding: '1.5rem',
-  boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
-  transition: 'transform .2s',
+  transition: 'all .2s',
   '& section': {
     display: 'flex',
     // gridTemplateColumns: '35% 65%',
@@ -188,7 +194,8 @@ export const TecniqueCards = styled('div', {
     margin: '1rem 1.5rem 2rem'
   },
   '&:hover': {
-    transform: 'scale(1.05)'
+    transform: 'scale(1.05)',
+    boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
   }
 })
 
