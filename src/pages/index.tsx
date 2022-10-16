@@ -7,24 +7,18 @@ import {
   CardsTecniqueContainer,
   HeroContainer,
   HeroDescription,
-  ImageCard,
   NavContainer,
   NavLink,
   TecniqueCards,
 } from "../styles/pages/home";
 
+import Image from 'next/future/image';
 import meatTable1 from '../assets/wood/tabua1_carne.jpg'
 
 export default function Home() {
   return (
     <>
       <HeroContainer>
-        {/* <NavContainer>
-          <NavLink>Catalogo</NavLink>
-          <NavLink>Parceiros</NavLink>
-          <NavLink>Encomendas</NavLink>
-          <NavLink>Sobre nós</NavLink>
-        </NavContainer> */}
         <HeroDescription className="heroSection">
           <h1>Artesanato com madeira e costura de alto nível</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit, veniam dolores assumenda doloremque corrupti.</p>
@@ -34,24 +28,24 @@ export default function Home() {
 
       <CardsContainer>
         <Card>
-          <ImageCard src={meatTable1.src} />
+          <Image src={meatTable1} alt='' sizes="100vw" width='100%' height={'100%'} />
           <h1>Tecidos</h1>
           <p>Tecidos feitos com as melhores telas, feitos com maestria e amor de alguem apaixonado por artes manuais</p>
         </Card>
         <Card>
-          <ImageCard src={meatTable1.src} />
+          <Image src={meatTable1} alt='' />
           <h1>Marcenaria</h1>
           <p>Trabalhos em madeira feitos com precisão e carinho. Produtos unicos variados de mar</p>
         </Card>
         <Card>
-          <ImageCard src={meatTable1.src} />
+          <Image src={meatTable1} alt='' />
           <h1>Trabalho com Laser</h1>
           <p>Personalização de peças de diferentes materiais, utilizando um laser de alta precisão</p>
         </Card>
       </CardsContainer>
 
       <Banner>
-        <h1>{" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "}</h1>
+        <h1>{'" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "'}</h1>
       </Banner>
 
       <CardsTecniqueContainer>
@@ -87,7 +81,6 @@ export default function Home() {
         <h1>Também trabalhamos com personalização de peças</h1>
         <button>SAIBA MAIS</button>
       </BottonDiv>
-
     </>
   )
 }

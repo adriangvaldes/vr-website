@@ -1,9 +1,9 @@
 import { AppProps } from "next/app"
 import { globalStyles } from "../styles/globat"
 import { Linkedin, GitHub } from 'react-feather'
-
+import Image from 'next/future/image';
 import vrBranco from '../assets/vrBranco.png'
-import { Container, Footer, FooterContainer, Header, HeaderContainer, HeaderMenu, ImageHome, Link } from "../styles/pages/app"
+import { Container, Footer, FooterContainer, Header, HeaderContainer, HeaderMenu, Link } from "../styles/pages/app"
 
 globalStyles()
 
@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <Container>
       <Header>
         <HeaderContainer>
-          <ImageHome src={vrBranco.src} alt="" width={30} style={{ margin: '0.2rem 1rem' }} />
+          <Image src={vrBranco} alt='vr_branco' width={30} />
           <HeaderMenu>
             <Link href="/">Home</Link>
             <Link href="/">Marcenaria</Link>
@@ -25,19 +25,18 @@ export default function App({ Component, pageProps }: AppProps) {
       <FooterContainer>
         <Footer>
           <section>
-            <ImageHome src={vrBranco.src} alt="" width={50} style={{ margin: '0.2rem 1rem' }} />
+            <Image src={vrBranco} alt='vr_branco' width={50} />
             <div>
               <p>Copyright © 2022</p>
               <p>Desenvolvido por Adrian Valdes </p>
             </div>
-
           </section>
-          <HeaderMenu>
+          {/* <HeaderMenu>
             <Link href="/">Home</Link>
             <Link href="/">Marcenaria</Link>
             <Link href="/">Tecidos</Link>
             <Link href="/">Laser</Link>
-          </HeaderMenu>
+          </HeaderMenu> */}
         </Footer>
       </FooterContainer>
     </Container>

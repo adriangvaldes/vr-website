@@ -22,6 +22,11 @@ export const {
       textBright: '#d7cdbe',
       textGrey: '#c6c0b8',
       spotlight: '#e3573b',
-    }
+    },
+    media: {
+      bp1: '(min-width: 640px)',
+      bp2: '(min-width: 768px)',
+      bp3: '(min-width: 1024px)',
+    },
   }
 })

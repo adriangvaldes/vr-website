@@ -10,10 +10,7 @@ export const Container = styled('div', {
 export const Header = styled('header', {
   background: '$accent',
   width: '100%',
-})
-
-export const ImageHome = styled('img', {
-
+  maxWidth: '1920px',
 })
 
 export const Link = styled('a', {
@@ -53,14 +50,15 @@ export const FooterContainer = styled('footer', {
 export const Footer = styled('div', {
   maxWidth: '1920px',
   display: 'flex',
-  height: '6rem',
+  minHeight: '6rem',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0.5rem 10rem',
+  padding: '0.5rem',
   margin: '0 auto',
   '& section': {
     display: 'flex',
     alignItems: 'center',
+    gap: '1rem',
   },
   '& p': {
     color: '$textGrey',

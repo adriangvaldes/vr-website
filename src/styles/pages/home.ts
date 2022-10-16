@@ -67,26 +67,35 @@ export const HeroDescription = styled('section', {
 
 export const CardsContainer = styled('div', {
   display: 'grid',
-  width: '88%',
-  margin: '0 auto',
-  maxWidth: '1920px',
+  margin: '5rem auto',
   justifyContent: 'center',
-  gridTemplateColumns: '1fr 1fr 1fr',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gridAutoRows: '0.2fr',
+  '& img': {
+    maxWidth: '100%',
+    objectFit: 'contain',
+  },
   gridAutoFlow: 'row',
   justifyItems: 'center',
-  padding: '5rem',
+  padding: '0 1rem',
   gridGap: '1.2rem',
 })
+
 export const CardsTecniqueContainer = styled('div', {
   display: 'grid',
   width: '80%',
   margin: '0 auto',
   maxWidth: '1920px',
   justifyContent: 'center',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+  gridAutoRows: '0.2fr',
+  '& img': {
+    maxWidth: '100%',
+    objectFit: 'contain',
+  },
   gridAutoFlow: 'row',
   justifyItems: 'center',
-  padding: '5rem',
+  padding: '5rem 0rem',
   gridGap: '1rem',
 })
 
@@ -95,8 +104,9 @@ export const Card = styled('div', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  width: '30.25rem',
-  height: '35rem',
+  objectFit: 'cover',
+  maxWidth: '30.25rem',
+  maxHeight: '35rem',
   background: '$brown400',
   padding: '1.5rem',
   boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
@@ -114,10 +124,6 @@ export const Card = styled('div', {
   }
 })
 
-export const ImageCard = styled('img', {
-  width: '28rem',
-})
-
 export const Banner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -131,12 +137,19 @@ export const Banner = styled('div', {
   width: '100%',
   maxWidth: '1920px',
   margin: '0 auto',
-  padding: '5rem 30rem',
+  overflow: 'hidden',
+  padding: '5rem 0',
   '& h1': {
     color: '$white',
     letterSpacing: '0.1rem',
     textAlign: 'center',
-  }
+    margin: '0 2rem',
+    fontSize: '1.5rem',
+  },
+  '@bp1': {
+    fontSize: '1.5rem',
+    background: 'green'
+  },
 })
 
 export const TecniqueCards = styled('div', {
@@ -145,15 +158,15 @@ export const TecniqueCards = styled('div', {
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  width: '40rem',
-  height: '35rem',
+  maxWidth: '40rem',
+  maxHeight: '100rem',
   background: '$brown400',
   // padding: '1.5rem',
   boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px',
   transition: 'transform .2s',
   '& section': {
-    display: 'grid',
-    gridTemplateColumns: '35% 65%',
+    display: 'flex',
+    // gridTemplateColumns: '35% 65%',
   },
   '& span': {
     position: 'absolute',
@@ -172,7 +185,7 @@ export const TecniqueCards = styled('div', {
     fontSize: '1.5rem',
   },
   '& p': {
-    margin: '1rem 1.5rem'
+    margin: '1rem 1.5rem 2rem'
   },
   '&:hover': {
     transform: 'scale(1.05)'
@@ -207,7 +220,7 @@ export const BottonDiv = styled('div', {
   gap: '1rem',
   alignItems: 'center',
   justifyContent: 'center',
-  width: '600px',
+  maxWidth: '600px',
   '& h1': {
     textAlign: 'center',
     letterSpacing: '0.1rem',
