@@ -51,7 +51,7 @@ export default function Home() {
       </CardsContainer>
 
       <Banner>
-        <h1>" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "</h1>
+        <h1>{" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "}</h1>
       </Banner>
 
       <CardsTecniqueContainer>
