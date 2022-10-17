@@ -107,7 +107,10 @@ export const Card = styled('div', {
   flexDirection: 'column',
   maxWidth: '30.25rem',
   maxHeight: '35rem',
+  minHeight: '30rem',
   background: '$brown400',
+  overflow: 'hidden',
+  borderRadius: '10px',
   // padding: '1rem',
   transition: 'all .2s',
   boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
@@ -129,6 +132,22 @@ export const Card = styled('div', {
   }
 })
 
+export const H1 = styled('h1', {
+  variants: {
+    fontSizeVariant: {
+      small: {
+        fontSize: '1rem'
+      },
+      medium: {
+        fontSize: '1rem'
+      },
+      large: {
+        fontSize: '1rem'
+      }
+    },
+  },
+})
+
 export const Banner = styled('div', {
   display: 'flex',
   flexDirection: 'column',
@@ -144,17 +163,14 @@ export const Banner = styled('div', {
   margin: '0 auto',
   overflow: 'hidden',
   padding: '5rem 0',
+
   '& h1': {
     color: '$white',
     letterSpacing: '0.1rem',
     textAlign: 'center',
     margin: '0 2rem',
-    fontSize: '1.5rem',
     maxWidth: '1100px',
-  },
-  '@bp1': {
-    fontSize: '1.5rem',
-    background: 'green'
+    // fontSize: '1.5rem'
   },
 })
 
@@ -166,7 +182,10 @@ export const TecniqueCards = styled('div', {
   flexDirection: 'column',
   maxWidth: '40rem',
   maxHeight: '100rem',
+  overflow: 'hidden',
+  minHeight: '30rem',
   background: '$brown400',
+  borderRadius: '10px',
   boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
   // padding: '1.5rem',
   transition: 'all .2s',

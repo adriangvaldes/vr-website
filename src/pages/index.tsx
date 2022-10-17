@@ -5,6 +5,7 @@ import {
   CardBackgroundImage,
   CardsContainer,
   CardsTecniqueContainer,
+  H1,
   HeroContainer,
   HeroDescription,
   NavContainer,
@@ -45,7 +46,7 @@ export default function Home() {
       </CardsContainer>
 
       <Banner>
-        <h1>{'" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "'}</h1>
+        <H1 fontSizeVariant={{ '@sm': 'small', '@md': 'small', '@lg': 'small' }}>{'" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "'}</H1>
       </Banner>
 
       <CardsTecniqueContainer>
