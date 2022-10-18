@@ -8,9 +8,9 @@ export const Container = styled('div', {
 })
 
 export const Header = styled('header', {
-  background: '$accent',
+  background: '$accentDarker',
   width: '100%',
-  maxWidth: '1920px',
+  maxWidth: '100%',
 })
 
 export const Link = styled('a', {
@@ -28,7 +28,7 @@ export const Link = styled('a', {
 })
 
 export const HeaderContainer = styled('div', {
-  maxWidth: '1920px',
+  maxWidth: '1440px',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -48,7 +48,7 @@ export const FooterContainer = styled('footer', {
 })
 
 export const Footer = styled('div', {
-  maxWidth: '1920px',
+  maxWidth: '1440px',
   display: 'flex',
   minHeight: '6rem',
   justifyContent: 'space-between',

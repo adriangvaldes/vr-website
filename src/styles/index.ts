@@ -14,6 +14,7 @@ export const {
     colors: {
       // background: '#ccbda7',
       background: '#faf4eb',
+      background20: '#d4c9bf',
       brown400: '#d5c7ba',
       accent: '#230f04',
       accentDarker: '#1f0e04',

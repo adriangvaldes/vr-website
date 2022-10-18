@@ -2,6 +2,12 @@ import { styled } from "..";
 import heroSectionBackground from '../../assets/heroSectionBackground.jpg'
 import background2 from '../../assets/wood/background2.jpg'
 
+export const HomeContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%'
+})
+
 export const NavContainer = styled('nav', {
   display: 'flex',
   gap: 20,
@@ -65,9 +71,59 @@ export const HeroDescription = styled('section', {
   },
 })
 
+export const AboutUsContainer = styled('div', {
+  display: 'flex',
+  minHeight: '400px',
+  background: '$accentDarker',
+  width: '100%',
+  padding: '5rem 2rem',
+  margin: '0 auto',
+  '& section': {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  '& div': {
+    maxWidth: '35rem'
+  },
+  '& h2': {
+    color: '$background',
+    fontSize: '2rem'
+  },
+  '& p': {
+    marginTop: '1rem',
+    color: '$background',
+    lineHeight: '1.6rem',
+    fontSize: '1rem'
+  }
+})
+
+export const Title = styled('h1', {
+  color: '$background',
+  fontSize: '1.25rem',
+  // alignSelf: 'center',
+  // margin: '0 auto',
+})
+
+export const SectionTitle = styled('div', {
+  borderBottom: '3px solid $accentDarker',
+
+  '& h1': {
+    fontSize: '1.5rem',
+    color: '$accentDarker',
+    textAlign: 'center',
+    margin: '2rem 0',
+    letterSpacing: '1rem',
+    // background: 'green',
+  },
+})
+
+
 export const CardsContainer = styled('div', {
   display: 'grid',
-  margin: '5rem auto',
+  margin: '8rem auto',
   justifyContent: 'center',
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   gridAutoRows: '0.2fr',
@@ -105,7 +161,7 @@ export const Card = styled('div', {
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
   flexDirection: 'column',
-  maxWidth: '30.25rem',
+  maxWidth: '25rem',
   maxHeight: '35rem',
   minHeight: '30rem',
   background: '$brown400',
@@ -113,7 +169,7 @@ export const Card = styled('div', {
   borderRadius: '10px',
   // padding: '1rem',
   transition: 'all .2s',
-  boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+  boxShadow: 'rgba(0, 0, 0, 0.15) 0px 3px 3px 0px',
   '& img': {
     objectFit: 'cover',
     maxHeight: '300px',
@@ -128,7 +184,7 @@ export const Card = styled('div', {
   },
   '&:hover': {
     transform: 'scale(1.05)',
-    boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
+    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
   }
 })
 
@@ -186,7 +242,7 @@ export const TecniqueCards = styled('div', {
   minHeight: '30rem',
   background: '$brown400',
   borderRadius: '10px',
-  boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+  boxShadow: 'rgba(0, 0, 0, 0.15) 0px 3px 3px 0px',
   // padding: '1.5rem',
   transition: 'all .2s',
   '& section': {
@@ -214,7 +270,7 @@ export const TecniqueCards = styled('div', {
   },
   '&:hover': {
     transform: 'scale(1.05)',
-    boxShadow: 'rgba(17, 12, 46, 0.15) 0px 48px 100px 0px',
+    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px',
   }
 })
 
@@ -244,6 +300,7 @@ export const BottonDiv = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '1rem',
+  padding: '0 1rem',
   alignItems: 'center',
   justifyContent: 'center',
   maxWidth: '600px',
@@ -259,6 +316,7 @@ export const BottonDiv = styled('div', {
     fontWeight: 'bold',
     transition: 'all 0.2s',
     cursor: 'pointer',
+    marginTop: '1rem',
     '&:hover': {
       backgroundColor: '$spotlight',
       color: '$white',

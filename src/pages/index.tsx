@@ -1,4 +1,5 @@
 import {
+  AboutUsContainer,
   Banner,
   BottonDiv,
   Card,
@@ -8,9 +9,12 @@ import {
   H1,
   HeroContainer,
   HeroDescription,
+  HomeContainer,
   NavContainer,
   NavLink,
+  SectionTitle,
   TecniqueCards,
+  Title,
 } from "../styles/pages/home";
 
 import Image from 'next/future/image';
@@ -18,7 +22,7 @@ import meatTable1 from '../assets/wood/tabua1_carne.jpg'
 
 export default function Home() {
   return (
-    <>
+    <HomeContainer>
       <HeroContainer>
         <HeroDescription className="heroSection">
           <h1>Artesanato com madeira e costura de alto nível</h1>
@@ -26,6 +30,19 @@ export default function Home() {
           <button>Ir para catálogo</button>
         </HeroDescription>
       </HeroContainer>
+      <AboutUsContainer>
+        <section>
+          <div>
+            <Title>Sobre nós</Title>
+            <h2>Temos fabricado produto diretamente da nossa casa</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque recusandae ducimus iste saepe eaque nobis, provident doloremque quibusdam tempora corporis? Vel eos obcaecati omnis exercitationem cupiditate reiciendis dolor quas vero.
+              Vero voluptas aperiam distinctio dolores amet omnis dolorum quisquam! </p>
+          </div>
+          {/* <Image src={meatTable1} alt='' sizes="20vw" /> */}
+        </section>
+      </AboutUsContainer>
+
+      <SectionTitle><h1>PRODUTOS</h1></SectionTitle>
 
       <CardsContainer>
         <Card>
@@ -49,9 +66,11 @@ export default function Home() {
         <H1 >{'" Nosso objetivo é entregar os melhores produtos, feitos com muito amor e carinho, para passar ao cliente todo o cuidado que temos nos nossos processos "'}</H1>
       </Banner>
 
+      <SectionTitle><h1>TÉCNICAS</h1></SectionTitle>
+
       <CardsTecniqueContainer>
         <TecniqueCards>
-          <span>TÉCNICAS</span>
+          <span>MARCENARIA</span>
           <CardBackgroundImage />
           <section>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -64,7 +83,7 @@ export default function Home() {
           </section>
         </TecniqueCards>
         <TecniqueCards>
-          <span>TÉCNICAS</span>
+          <span>MARCENARIA</span>
           <CardBackgroundImage />
           <section>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -82,6 +101,6 @@ export default function Home() {
         <h1>Também trabalhamos com personalização de peças</h1>
         <button>SAIBA MAIS</button>
       </BottonDiv>
-    </>
+    </HomeContainer>
   )
 }
