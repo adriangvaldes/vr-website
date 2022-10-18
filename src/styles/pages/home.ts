@@ -170,7 +170,7 @@ export const Banner = styled('div', {
     textAlign: 'center',
     margin: '0 2rem',
     maxWidth: '1100px',
-    // fontSize: '1.5rem'
+    fontSize: '1.5rem'
   },
 })
 
