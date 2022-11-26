@@ -1,6 +1,7 @@
 import { styled } from "..";
-import heroSectionBackground from '../../assets/heroSectionBackground.jpg'
-import background2 from '../../assets/wood/background2.jpg'
+import capa from '../../assets/capa.jpg'
+import banner from '../../assets/wood/background2.jpg'
+import background2 from '../../assets/wood/marchetariaExample.jpg'
 
 export const HomeContainer = styled('div', {
   display: 'flex',
@@ -28,11 +29,12 @@ export const NavLink = styled('a', {
 export const HeroContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${heroSectionBackground.src})`,
+  background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${capa.src})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
+  backgroundSize: '100%',
   backgroundBlendMode: 'darken',
-  height: '500px',
+  height: '100vh',
   width: '100%',
   maxWidth: '1920px',
   margin: '0 auto'
@@ -44,18 +46,22 @@ export const HeroDescription = styled('section', {
   margin: 'auto',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
+  // justifyContent: 'center',
   alignItems: 'center',
   '& h1': {
     fontSize: '3rem',
-    textAlign: 'center',
     letterSpacing: '0.2rem'
   },
   '& p': {
-    margin: '1rem',
-    textAlign: 'center',
-    letterSpacing: '0.2rem'
+    marginTop: '1rem',
+    // textAlign: 'center',
+    letterSpacing: '0.2rem',
+    lineHeight: '1rem',
+    '&:last-of-type': {
+      marginBottom: '1rem'
+    },
   },
+
   '& button': {
     marginTop: '1rem',
     border: '1px solid $white',
@@ -73,20 +79,26 @@ export const HeroDescription = styled('section', {
 
 export const AboutUsContainer = styled('div', {
   display: 'flex',
-  minHeight: '400px',
+  height: '100vh',
   background: '$accentDarker',
   width: '100%',
-  padding: '5rem 2rem',
+  // padding: '5rem 2rem',
   margin: '0 auto',
+  // alignItems: 'center',
+  position: 'relative',
   '& section': {
     display: 'flex',
-    flexDirection: 'column',
+    gap: '5rem',
+    flexDirection: 'row',
     width: '100%',
-    maxWidth: '1200px',
+    // maxWidth: '1200px',
     margin: '0 auto',
+
   },
   '& div': {
-    maxWidth: '35rem'
+    marginLeft: '25rem',
+    maxWidth: '35rem',
+    alignSelf: 'center'
   },
   '& h2': {
     color: '$background',
@@ -95,9 +107,20 @@ export const AboutUsContainer = styled('div', {
   '& p': {
     marginTop: '1rem',
     color: '$background',
-    lineHeight: '1.6rem',
-    fontSize: '1rem'
+    lineHeight: '1.8rem',
+    fontSize: '1rem',
+    '& span': {
+      fontWeight: 'bold',
+      fontSize: '1.1rem'
+    }
   }
+})
+
+export const ImageContainer = styled('aside', {
+  overflow: 'hidden',
+  width: '100%',
+  WebkitMask: 'linear-gradient(to left, #000, #0000)',
+  mask: 'linear-gradient(to left, #000, #0000)',
 })
 
 export const Title = styled('h1', {
@@ -111,36 +134,55 @@ export const SectionTitle = styled('div', {
   borderBottom: '3px solid $accentDarker',
 
   '& h1': {
-    fontSize: '1.5rem',
+    fontSize: '1.25rem',
     color: '$accentDarker',
     textAlign: 'center',
-    margin: '2rem 0',
+    margin: '1rem 0',
     letterSpacing: '1rem',
     // background: 'green',
   },
 })
 
+export const ProductsContainer = styled('div', {
+  height: '100vh'
+})
 
 export const CardsContainer = styled('div', {
   display: 'grid',
-  margin: '8rem auto',
+  margin: '4rem auto',
   justifyContent: 'center',
   gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
   gridAutoRows: '0.2fr',
   '& img': {
     maxWidth: '100%',
   },
-  maxWidth: '80vw',
+  alignSelf: 'center',
+  maxWidth: '1300px',
   gridAutoFlow: 'row',
   justifyItems: 'center',
   padding: '0rem',
   gridGap: '1.5rem',
 })
 
+export const ProductsDescription = styled('div', {
+  maxWidth: '1000px',
+  margin: '0rem auto ',
+  marginTop: '5rem',
+  marginBottom: '0',
+  '& span': {
+    color: '$spotlight',
+    fontWeight: 'bold',
+  }
+})
+
+export const TecniqueContainer = styled('div', {
+  height: '100vh',
+})
+
 export const CardsTecniqueContainer = styled('div', {
   display: 'grid',
   width: '80%',
-  margin: '0 auto',
+  margin: '0rem auto',
   maxWidth: '1400px',
   justifyContent: 'center',
   gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
@@ -209,7 +251,7 @@ export const Banner = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${background2.src})`,
+  background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${banner.src})`,
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundBlendMode: 'darken',
@@ -237,9 +279,9 @@ export const TecniqueCards = styled('div', {
   alignItems: 'center',
   flexDirection: 'column',
   maxWidth: '40rem',
-  maxHeight: '100rem',
+  maxHeight: '200rem',
   overflow: 'hidden',
-  minHeight: '30rem',
+  minHeight: '32rem',
   background: '$brown400',
   borderRadius: '10px',
   boxShadow: 'rgba(0, 0, 0, 0.15) 0px 3px 3px 0px',
@@ -247,6 +289,8 @@ export const TecniqueCards = styled('div', {
   transition: 'all .2s',
   '& section': {
     display: 'flex',
+    margin: '1rem',
+    gap: '1rem'
     // gridTemplateColumns: '35% 65%',
   },
   '& span': {
@@ -266,7 +310,7 @@ export const TecniqueCards = styled('div', {
     fontSize: '1.5rem',
   },
   '& p': {
-    margin: '1rem 1.5rem 2rem'
+    margin: '1rem 1.5rem 0rem'
   },
   '&:hover': {
     transform: 'scale(1.05)',
@@ -275,9 +319,6 @@ export const TecniqueCards = styled('div', {
 })
 
 export const CardBackgroundImage = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
   overflow: 'hidden',
   alignItems: 'center',
   background: `url(${background2.src})`,

@@ -10,6 +10,7 @@ export const Container = styled('div', {
 export const Header = styled('header', {
   background: '$accentDarker',
   width: '100%',
+  minHeight: '3rem',
   maxWidth: '100%',
 })
 

@@ -10,14 +10,14 @@ globalStyles()
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Container>
-      <Header>
+      <Header id="Header">
         <HeaderContainer>
           <Image src={vrBranco} alt='vr_branco' width={30} />
           <HeaderMenu>
-            <Link href="/">Home</Link>
-            <Link href="/">Marcenaria</Link>
-            <Link href="/">Tecidos</Link>
-            <Link href="/">Laser</Link>
+            <Link href="#Home">Home</Link>
+            <Link href="#AboutUs">Sobre nós</Link>
+            <Link href="#Products">Produtos</Link>
+            <Link href="#Tecniques">Técnicas</Link>
           </HeaderMenu>
         </HeaderContainer>
       </Header>
