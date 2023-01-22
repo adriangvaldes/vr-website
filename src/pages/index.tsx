@@ -25,6 +25,7 @@ import laserWork from '../assets/laser/laser_photo1.jpg'
 import aboutUsImage from '../assets/process/ivonne_com_estante.jpg'
 import woodWorkingIcon from '../assets/woodWorkingIcon.png'
 import clothIcon from '../assets/clothIcon.png'
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -34,7 +35,9 @@ export default function Home() {
           <h1>Artesanato de alto padrão</h1>
           <p>madeira & tecido</p>
           <p>produtos personalizados a laser</p>
-          <button>Ir para catálogo</button>
+          <Link href='/catalog'>
+            <button>Ir para catálogo</button>
+          </Link>
         </HeroDescription>
       </HeroContainer>
       <SectionTitle><h1></h1></SectionTitle>
@@ -44,9 +47,9 @@ export default function Home() {
           <div>
             <Title>Sobre nós</Title>
             <h2>Temos fabricado produto diretamente da nossa casa</h2>
-            <p>Nosso Ateliê tem como missão oferecer produtos de artesanato com alto padrão de qualidade, que tenha como base a criatividade , o trabalho focado nos detalhes e personalização das peças e também  no design que atenda aos diversos públicos.
-              Todo nosso fazer está e sempre estará pautado em um conjunto de valores que nos norteiam:
-            </p>
+            <p>Nosso Ateliê se propõe como missão oferecer produtos de artesanato com alto padrão de qualidade, que tenha como base a criatividade , o trabalho focado nos detalhes e personalização das peças e também  no design que atenda aos diversos públicos.</p>
+            <p>Temos uma visão: convertemos em uma empresa de referência na produção de artesanato em madeira e tecido, que seja exemplo de qualidade diferenciada, preço justo e confiabilidade desde o projeto até a entrega do produto.</p>
+            <p>Todo nosso fazer está e sempre estará pautado em um conjunto de valores que nos norteiam:</p>
             <p><span>1)</span> Oferecer a máxima qualidade nos produtos e focar na satisfação do cliente acima da rapidez e lucro nas vendas</p>
             <p><span>2)</span> Prioridade nas relações humanas baseadas na ética, na confiança e o respeito pelo cliente.</p>
             <p><span>3)</span> Responsabilidade Ambiental em toda a cadeia produtiva: desde os insumos, gasto de energia e materiais, e descarte de resíduos</p>
@@ -62,7 +65,7 @@ export default function Home() {
       <ProductsContainer id='Products'>
         <SectionTitle><h1>PRODUTOS</h1></SectionTitle>
         <ProductsDescription>
-          <p>Nosso Ateliê está especializado em peças artesanais feitas com <span>madeira</span> e <span>tecidos</span> de alta qualidade. Nossos produtos, fundamentalmente, estão dentro do conjunto de utensílios domésticos e/ou empresariais, que incorporam além da utilidade os traços da beleza artística que os diferencia. Além disso com técnicas auxiliares como gravação a <span>laser</span>, podemos oferecer o serviço de personalizar as suas peças de acordo ao desejo do cliente, que pode ser desde a gravação de uma dedicatória de um presente, uma foto familiar, assim como a logomarca de uma empresa.</p>
+          <p>Nosso Ateliê está especializao em peças artesanais feitas com <span>madeira</span> e <span>tecidos</span> de alta qualidade. Nossos produtos, fundamentalmente, estão dentro do conjunto de utensílios domésticos e/ou empresariais, que incorporam além da utilidade os traços da beleza artística que os diferencia. Além disso com técnicas auxiliares como Gravação a <span>Laser</span>, podemos oferecer o serviço de personalizar as suas peças de acordo ao desejo do cliente, que pode ser desde a gravação de uma dedicatória de um presente, uma foto familiar, assim como a logomarca de uma empresa.</p>
         </ProductsDescription>
         <CardsContainer>
           <Card>
@@ -90,7 +93,7 @@ export default function Home() {
       <SectionTitle id='Tecniques'><h1>TÉCNICAS</h1></SectionTitle>
 
       <TecniqueContainer>
-        <ProductsDescription>Nossa equipe ao trabalhar com artesanato criativo, está constantemente acrescentando novas ideias, gabaritos e técnicas para atingir a perfeição em cada peça. E como parte de nossa filosofia presa pela transparência, estamos comprometidos com além de oferecer produtos de alto padrão de qualidade, também mostrar um pouco do “como o fazemos”, e quais técnicas e ferramentas utilizamos. Desta forma aos poucos iremos apresentando nossa jornada de trabalho e criação em nossos projetos. De forma resumida nosso know out atual o expomos a seguir.</ProductsDescription>
+        <ProductsDescription>Nossa equipe ao trabalhar com artesanato criativo, está constantemente acrescentando novas ideias, gabaritos e técnicas para atingir a perfeição em cada peça. E como parte de nossa filosofia presa pela transparência, estamos comprometidos com além de oferecer produtos de alto padrão de qualidade, também mostrar um pouco do “como o fazemos”, e quais técnicas e ferramentas utilizamos. Desta forma aos poucos iremos apresentando nossa jornada de trabalho e criação em nossos projetos. De forma resumida nosso know out atual o expomos a seguir</ProductsDescription>
         <CardsTecniqueContainer>
           <TecniqueCards>
             <span>MARCENARIA</span>

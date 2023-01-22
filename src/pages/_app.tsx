@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <HeaderContainer>
           <Image src={vrBranco} alt='vr_branco' width={30} />
           <HeaderMenu>
-            <Link href="#Home">Home</Link>
+            <Link href="/">Home</Link>
             <Link href="#AboutUs">Sobre nós</Link>
             <Link href="#Products">Produtos</Link>
             <Link href="#Tecniques">Técnicas</Link>
@@ -31,12 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
               <p>Desenvolvido por Adrian Valdes </p>
             </div>
           </section>
-          {/* <HeaderMenu>
-            <Link href="/">Home</Link>
-            <Link href="/">Marcenaria</Link>
-            <Link href="/">Tecidos</Link>
-            <Link href="/">Laser</Link>
-          </HeaderMenu> */}
         </Footer>
       </FooterContainer>
     </Container>

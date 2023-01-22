@@ -6,6 +6,8 @@ export const globalStyles = globalCss({
     padding: 0,
     boxSizing: 'border-box',
     scrollBehavior: 'smooth',
+    WebkitFontSmoothing: 'antialiased',
+    MozOsxFontSmoothing: 'grayscale',
   },
 
   body: {
