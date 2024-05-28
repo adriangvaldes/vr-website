@@ -18,13 +18,15 @@ export const Link = styled('a', {
   fontSize: '0.9rem',
   textDecoration: 'none',
   color: '$textGrey',
-  transition: 'all 0.2s',
+  transition: 'all 0.5s',
+  transitionProperty: 'background-color, color, width, height, opacity, transform, border, padding, box-shadow',
   WebkitBoxSizing: 'border-box ',
   MozBoxSizing: 'border-box',
   boxSizing: 'border-box',
   '&:hover': {
     color: '$white',
-    borderBottom: '1px solid $spotlight'
+    borderBottom: '1px solid $spotlight',
+    marginBottom: -1,
   },
 })
 
@@ -41,6 +43,9 @@ export const HeaderMenu = styled('div', {
   display: 'flex',
   gap: 10,
   marginRight: '2rem',
+  webkitBoxSizing: 'border-box', /* Safari/Chrome, other WebKit */
+  mozBoxSizing: 'border-box',    /* Firefox, other Gecko */
+  boxSizing: 'border-box',         /* Opera/IE 8+ */
 })
 
 export const FooterContainer = styled('footer', {
