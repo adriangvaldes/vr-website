@@ -21,6 +21,7 @@ export const CatalogContainer = styled('div', {
   justifyContent: 'center',
   width: '100%',
 })
+
 export const CatalogSideBar = styled('div', {
   display: 'flex',
   flexDirection: 'column',

@@ -1,9 +1,9 @@
-import { CardItem, CatalogContainer, CatalogContentContainer, CatalogHeader, CatalogSideBar, SideBarItem, SideBarItemTitle } from "../styles/pages/catalog";
-import Checkbox from '@mui/material/Checkbox';
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
+import Checkbox from '@mui/material/Checkbox';
+import Image from 'next/image';
 import { useEffect, useState } from "react";
-import Image from 'next/future/image';
+import { CardItem, CatalogContainer, CatalogContentContainer, CatalogHeader, CatalogSideBar } from "../styles/pages/catalog";
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 

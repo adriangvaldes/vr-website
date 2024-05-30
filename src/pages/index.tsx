@@ -18,14 +18,13 @@ import {
   Title,
 } from "../styles/pages/home";
 
-import Image from 'next/future/image';
-import woodWorking from '../assets/wood/woodWorking.jpg'
-import cloths from '../assets/cloth/cloths.jpg'
-import laserWork from '../assets/laser/laser_photo1.jpg'
-import aboutUsImage from '../assets/process/ivonne_com_estante.jpg'
-import woodWorkingIcon from '../assets/woodWorkingIcon.png'
-import clothIcon from '../assets/clothIcon.png'
+import Image from 'next/image';
 import Link from "next/link";
+import cloths from '../assets/cloth/cloths.jpg';
+import laserWork from '../assets/laser/laser_photo1.jpg';
+import aboutUsImage from '../assets/process/ivonne_com_estante.jpg';
+import woodWorking from '../assets/wood/woodWorking.jpg';
+import woodWorkingIcon from '../assets/woodWorkingIcon.png';
 
 export default function Home() {
   return (
