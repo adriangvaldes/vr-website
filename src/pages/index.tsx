@@ -68,17 +68,17 @@ export default function Home() {
         </ProductsDescription>
         <CardsContainer>
           <Card>
-            <Image src={cloths} alt='' sizes="100vw" />
+            <Image src={cloths} alt='' sizes="100%, 100%" />
             <h1>Tecidos</h1>
             <p>Tecidos feitos com as melhores telas, feitos com maestria e amor de alguem apaixonado por artes manuais</p>
           </Card>
           <Card>
-            <Image src={woodWorking} alt='' sizes="100vw" width='100%' height={'100%'} />
+            <Image src={woodWorking} alt='' sizes="100%, 100%" />
             <h1>Marcenaria</h1>
             <p>Trabalhos em madeira feitos com precisão e carinho. Produtos unicos variados de mar</p>
           </Card>
           <Card>
-            <Image src={laserWork} alt='' sizes="100vw" width='100%' height={'100%'} />
+            <Image src={laserWork} alt='' sizes="100%, 100%" />
             <h1>Trabalho com Laser</h1>
             <p>Personalização de peças de diferentes materiais, utilizando um laser de alta precisão</p>
           </Card>
