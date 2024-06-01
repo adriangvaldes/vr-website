@@ -3,12 +3,6 @@ import capa from '../../assets/capa.jpg'
 import banner from '../../assets/wood/background2.jpg'
 import background2 from '../../assets/wood/marchetariaExample.jpg'
 
-export const HomeContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%'
-})
-
 export const NavContainer = styled('nav', {
   display: 'flex',
   gap: 20,
@@ -24,110 +18,6 @@ export const NavLink = styled('a', {
   textDecoration: 'none',
   color: '$white',
   cursor: 'pointer',
-})
-
-export const HeroContainer = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${capa.src})`,
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: '100%',
-  backgroundBlendMode: 'darken',
-  height: '100vh',
-  width: '100%',
-  maxWidth: '1920px',
-  margin: '0 auto'
-})
-
-export const HeroDescription = styled('section', {
-  color: '$white',
-  maxWidth: '800px',
-  margin: 'auto',
-  display: 'flex',
-  flexDirection: 'column',
-  // justifyContent: 'center',
-  alignItems: 'center',
-  '& h1': {
-    fontSize: '3rem',
-    letterSpacing: '0.2rem'
-  },
-  '& p': {
-    marginTop: '1rem',
-    // textAlign: 'center',
-    letterSpacing: '0.2rem',
-    lineHeight: '1rem',
-    '&:last-of-type': {
-      marginBottom: '1rem'
-    },
-  },
-
-  '& button': {
-    marginTop: '1rem',
-    border: '1px solid $white',
-    background: 'transparent',
-    padding: '0.6rem 1rem',
-    transition: 'all 0.2s',
-    cursor: 'pointer',
-    color: '$white',
-    '&:hover': {
-      background: '$white',
-      color: '$black'
-    },
-  },
-})
-
-export const AboutUsContainer = styled('div', {
-  display: 'flex',
-  height: '100vh',
-  background: '$accentDarker',
-  width: '100%',
-  // padding: '5rem 2rem',
-  margin: '0 auto',
-  // alignItems: 'center',
-  position: 'relative',
-  '& section': {
-    display: 'flex',
-    gap: '5rem',
-    flexDirection: 'row',
-    width: '100%',
-    // maxWidth: '1200px',
-    margin: '0 auto',
-
-  },
-  '& div': {
-    marginLeft: '25rem',
-    maxWidth: '35rem',
-    alignSelf: 'center'
-  },
-  '& h2': {
-    color: '$background',
-    fontSize: '2rem'
-  },
-  '& p': {
-    marginTop: '1rem',
-    color: '$background',
-    lineHeight: '1.8rem',
-    fontSize: '1rem',
-    '& span': {
-      fontWeight: 'bold',
-      fontSize: '1.1rem'
-    }
-  }
-})
-
-export const ImageContainer = styled('aside', {
-  overflow: 'hidden',
-  width: '100%',
-  WebkitMask: 'linear-gradient(to left, #000, #0000)',
-  mask: 'linear-gradient(to left, #000, #0000)',
-})
-
-export const Title = styled('h1', {
-  color: '$background',
-  fontSize: '1.25rem',
-  // alignSelf: 'center',
-  // margin: '0 auto',
 })
 
 export const SectionTitle = styled('div', {
