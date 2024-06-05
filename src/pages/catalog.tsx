@@ -1,21 +1,9 @@
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
-import {
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Collapse, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-  CardItem,
-  CatalogContainer,
-  CatalogContentContainer,
-  CatalogHeader,
-  CatalogSideBar,
-} from "../styles/pages/catalog";
+import { CardItem, CatalogContainer, CatalogContentContainer, CatalogHeader, CatalogSideBar } from "../styles/pages/catalog";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -28,20 +16,10 @@ export default function Home() {
   const [subCategory, setSubCategory] = useState<number[]>([]);
   const [products, setProducts] = useState([]);
 
-  function handleSelectSubCategory(
-    checked: boolean,
-    categoryValue: number,
-    subCategoryValue: number
-  ) {
-    setSubCategory((prevState) =>
-      checked
-        ? [...prevState, subCategoryValue]
-        : prevState.filter((element) => element !== subCategoryValue)
-    );
+  function handleSelectSubCategory(checked: boolean, categoryValue: number, subCategoryValue: number) {
+    setSubCategory((prevState) => (checked ? [...prevState, subCategoryValue] : prevState.filter((element) => element !== subCategoryValue)));
     setCategory((prevState) =>
-      !checked && subCategory.length - 1 === 0
-        ? [...prevState, categoryValue]
-        : prevState.filter((element) => element !== categoryValue)
+      !checked && subCategory.length - 1 === 0 ? [...prevState, categoryValue] : prevState.filter((element) => element !== categoryValue)
     );
   }
 
@@ -75,102 +53,55 @@ export default function Home() {
               <ListItemText primary='Madeira' />
               {openWoodCollapse ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-            <Collapse
-              in={openWoodCollapse}
-              sx={{ bgcolor: "#faf4eb", color: "#1f0e04" }}
-              timeout='auto'
-              unmountOnExit
-            >
+            <Collapse in={openWoodCollapse} sx={{ bgcolor: "#faf4eb", color: "#1f0e04" }} timeout='auto' unmountOnExit>
               <List component='div' disablePadding>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 1, 1)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 1, 1)} />
                   </ListItemIcon>
                   <ListItemText primary='Utensílios Gourmet' />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 1, 2)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 1, 2)} />
                   </ListItemIcon>
                   <ListItemText primary='Pequenos móveis utilitários' />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 1, 3)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 1, 3)} />
                   </ListItemIcon>
                   <ListItemText primary='Utensílios decorativos' />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 1, 4)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 1, 4)} />
                   </ListItemIcon>
                   <ListItemText primary='Luminárias' />
                 </ListItemButton>
               </List>
             </Collapse>
-            <ListItemButton
-              onClick={() => setOpenClothCollapse(!openClothCollapse)}
-            >
+            <ListItemButton onClick={() => setOpenClothCollapse(!openClothCollapse)}>
               <ListItemText primary='Tecido' />
               {openClothCollapse ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-            <Collapse
-              in={openClothCollapse}
-              sx={{ bgcolor: "#faf4eb", color: "#1f0e04" }}
-              timeout='auto'
-              unmountOnExit
-            >
+            <Collapse in={openClothCollapse} sx={{ bgcolor: "#faf4eb", color: "#1f0e04" }} timeout='auto' unmountOnExit>
               <List component='div' disablePadding>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 2, 1)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 2, 1)} />
                   </ListItemIcon>
                   <ListItemText primary='Bolsas e Nécessaires' />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 2, 2)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 2, 2)} />
                   </ListItemIcon>
                   <ListItemText primary='Utilitários Gourmet ' />
                 </ListItemButton>
                 <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon>
-                    <Checkbox
-                      {...label}
-                      onChange={(event) =>
-                        handleSelectSubCategory(event.target.checked, 2, 3)
-                      }
-                    />
+                    <Checkbox {...label} onChange={(event) => handleSelectSubCategory(event.target.checked, 2, 3)} />
                   </ListItemIcon>
                   <ListItemText primary='Outros utilitários' />
                 </ListItemButton>
