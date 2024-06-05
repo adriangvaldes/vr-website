@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     loadProducts();
-  }, [subCategory, loadProducts]);
+  }, [subCategory]);
 
   return (
     <>
