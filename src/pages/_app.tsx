@@ -3,6 +3,7 @@ import Image from "next/image";
 import vrBranco from "../assets/vrBranco.png";
 import "../global.css";
 import { globalStyles } from "../styles/globat";
+import Link from "next/link";
 
 globalStyles();
 
@@ -14,30 +15,30 @@ export default function App({ Component, pageProps }: AppProps) {
         <section className='bg-accentDarker h-16 max-w-[1440px] flex justify-between items-center py-2 px-4 my-0 mx-auto'>
           <Image src={vrBranco} alt='vr_branco' width={30} />
           <menu className='flex gap-3 mr-8 box-border'>
-            <a
+            <Link
               className='text-[0.9rem] no-underline text-textGrey transition-all duration-500 box-border hover:text-white hover:border-b hover:border-spotlight hover:mb-[-1px]'
               href='/'
             >
               Home
-            </a>
-            <a
+            </Link>
+            <Link
               className='text-[0.9rem] no-underline text-textGrey transition-all duration-500 box-border hover:text-white hover:border-b hover:border-spotlight hover:mb-[-1px]'
               href='#AboutUs'
             >
               Sobre nós
-            </a>
-            <a
+            </Link>
+            <Link
               className='text-[0.9rem] no-underline text-textGrey transition-all duration-500 box-border hover:text-white hover:border-b hover:border-spotlight hover:mb-[-1px]'
               href='#Products'
             >
               Produtos
-            </a>
-            <a
+            </Link>
+            <Link
               className='text-[0.9rem] no-underline text-textGrey transition-all duration-500 box-border hover:text-white hover:border-b hover:border-spotlight hover:mb-[-1px]'
               href='#Tecniques'
             >
               Técnicas
-            </a>
+            </Link>
           </menu>
         </section>
       </header>

@@ -30,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     loadProducts();
-  }, [subCategory]);
+  }, [subCategory, loadProducts]);
 
   return (
     <>
@@ -111,8 +111,8 @@ export default function Home() {
         </CatalogSideBar>
         <CatalogContentContainer>
           {products.length > 0 &&
-            products.map((product) => (
-              <CardItem>
+            products.map((product, index) => (
+              <CardItem key={index}>
                 <div>
                   <Image src={product.imageUrl} alt='' fill sizes='100vw' />
                 </div>
