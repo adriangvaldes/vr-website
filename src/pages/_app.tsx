@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <div className=''>
       <header className='bg-accentDarker w-full sticky'>
         <section className='bg-accentDarker h-16 max-w-[1440px] flex justify-between items-center py-2 px-4 my-0 mx-auto'>
-          <Image src={vrBranco} alt='vr_branco' width={30} />
+          <Image src={vrBranco} alt='vr_branco' width={40} />
           <menu className='flex gap-3 mr-8 box-border'>
             <Link
               className='text-[0.9rem] no-underline text-textGrey transition-all duration-500 box-border hover:text-white hover:border-b hover:border-spotlight hover:mb-[-1px]'
@@ -48,8 +48,8 @@ export default function App({ Component, pageProps }: AppProps) {
           <div className='flex items-center gap-4'>
             <Image src={vrBranco} alt='vr_branco' width={50} />
             <div>
-              <p className='text-textGrey'>Copyright © 2022</p>
-              <p className='text-textGrey'>Desenvolvido por Adrian Valdes </p>
+              <p className='text-textGrey text-sm'>Copyright © 2022</p>
+              <p className='text-textGrey text-sm'>Desenvolvido por Adrian Valdes </p>
             </div>
           </div>
         </section>
