@@ -4,65 +4,79 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /*
+     * Design System — CSS variables aligned to the brand palette.
+     * Used by shadcn/ui components. The brand colors themselves are
+     * also set as static Tailwind tokens in tailwind.config.js.
+     *
+     * Brand hex references:
+     *   warm cream   #faf4eb → HSL 43 60% 95%
+     *   dark brown   #230f04 → HSL 18 77% 8%
+     *   darker brown #1f0e04 → HSL 18 80% 7%
+     *   spotlight    #e3573b → HSL 12 74% 56%
+     *   text bright  #d7cdbe → HSL 33 21% 74%
+     *   text grey    #c6c0b8 → HSL 28  9% 74%
+     */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --background:          43 60% 95%;   /* warm cream */
+    --foreground:          18 77%  8%;   /* dark brown */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --card:                43 60% 95%;
+    --card-foreground:     18 77%  8%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --popover:             43 60% 95%;
+    --popover-foreground:  18 77%  8%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --primary:             18 80%  7%;   /* darkest brown — primary buttons */
+    --primary-foreground:  43 60% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --secondary:           33 21% 83%;   /* warm light grey */
+    --secondary-foreground:18 77%  8%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --muted:               33 21% 83%;
+    --muted-foreground:    28 12% 50%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --accent:              33 21% 87%;   /* slightly lighter warm grey for hover states */
+    --accent-foreground:   18 77%  8%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --destructive:          0 84% 60%;
+    --destructive-foreground: 43 60% 95%;
+
+    --border:              33 21% 80%;
+    --input:               33 21% 80%;
+    --ring:                18 77%  8%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background:          18 80%  7%;
+    --foreground:          43 60% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card:                18 80%  7%;
+    --card-foreground:     43 60% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover:             18 80%  7%;
+    --popover-foreground:  43 60% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary:             43 60% 95%;
+    --primary-foreground:  18 80%  7%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary:           18 50% 15%;
+    --secondary-foreground:43 60% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted:               18 50% 15%;
+    --muted-foreground:    33 21% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent:              18 50% 15%;
+    --accent-foreground:   43 60% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive:          0 63% 31%;
+    --destructive-foreground:43 60% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border:              18 50% 15%;
+    --input:               18 50% 15%;
+    --ring:                33 21% 78%;
   }
 }
 
