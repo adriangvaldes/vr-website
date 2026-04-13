@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { useInView } from "@/hooks/useInView";
 import cloths from "@/assets/cloth/cloths.jpg";
 import laserWork from "@/assets/laser/laser_photo1.jpg";
 import aboutUsImage from "@/assets/process/ivonne_com_estante.jpg";
@@ -8,214 +10,336 @@ import background2 from "@/assets/wood/marchetariaExample.jpg";
 import woodWorkingIcon from "@/assets/woodWorkingIcon.png";
 import capa from "@/assets/capa.jpg";
 import banner from "@/assets/wood/background2.jpg";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselDots,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const aboutValues = [
+  {
+    num: "01",
+    text: "Oferecer a máxima qualidade nos produtos e focar na satisfação do cliente acima da rapidez e lucro nas vendas.",
+  },
+  {
+    num: "02",
+    text: "Prioridade nas relações humanas baseadas na ética, na confiança e o respeito pelo cliente.",
+  },
+  {
+    num: "03",
+    text: "Responsabilidade Ambiental em toda a cadeia produtiva: desde os insumos, gasto de energia e materiais, e descarte de resíduos.",
+  },
+  {
+    num: "04",
+    text: "Transparência em todo o processo produtivo incluindo as técnicas utilizadas e a possibilidade de ensino e treinamento.",
+  },
+];
+
+const productCards = [
+  {
+    src: cloths,
+    title: "Tecidos",
+    desc: "Tecidos feitos com as melhores telas, com maestria e amor de alguém apaixonado por artes manuais.",
+    delay: 0,
+  },
+  {
+    src: woodWorking,
+    title: "Marcenaria",
+    desc: "Trabalhos em madeira feitos com precisão e carinho. Produtos únicos e variados para o seu lar.",
+    delay: 0.15,
+  },
+  {
+    src: laserWork,
+    title: "Trabalho com Laser",
+    desc: "Personalização de peças de diferentes materiais, utilizando um laser de alta precisão.",
+    delay: 0.3,
+  },
+];
 
 export default function Home() {
+  const { ref: aboutRef, inView: aboutInView } = useInView(0.1);
+  const { ref: productsRef, inView: productsInView } = useInView(0.1);
+  const { ref: bannerRef, inView: bannerInView } = useInView(0.2);
+  const { ref: techniquesRef, inView: techniquesInView } = useInView(0.1);
+
   return (
     <div className='flex flex-col w-full'>
+
+      {/* ── HERO ──────────────────────────────────────────────────── */}
       <section
-        className='flex flex-col p-5 md:p-10 h-[500px] md:h-[calc(100vh-64px)] w-full max-w-[1920px] mx-auto bg-center bg-no-repeat bg-cover bg-blend-darken'
+        className='flex flex-col items-center justify-center px-5 py-16 h-[520px] sm:h-[600px] md:h-[calc(100vh-64px)] w-full max-w-[1920px] mx-auto bg-center bg-no-repeat bg-cover'
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${capa.src});`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${capa.src})`,
         }}
       >
-        <div className='text-white max-w-[800px] m-auto flex flex-col items-center'>
-          <h1 className='text-3xl md:text-6xl sm:text-4xl text-center'>Artesanato de alto padrão</h1>
-          <p className='mt-4 tracking-wide leading-4'>madeira & tecido</p>
-          <p className='mt-4 tracking-wide leading-4 mb-4'>produtos personalizados a laser</p>
+        <div className='text-white max-w-[800px] flex flex-col items-center text-center gap-4'>
+          <h1 className='animate-fade-in-up text-4xl sm:text-5xl md:text-6xl font-light leading-tight tracking-wide'>
+            Artesanato de alto padrão
+          </h1>
+          <p
+            className='animate-fade-in text-xs sm:text-sm tracking-[0.35em] uppercase text-white/60'
+            style={{ animationDelay: "0.25s" }}
+          >
+            madeira · tecido · laser
+          </p>
           <Link href='/catalog'>
-            <button className='mt-4 border border-white bg-transparent py-2 px-4 transition-all text-white cursor-pointer hover:bg-white hover:text-black'>
-              Ir para catálogo
+            <button
+              className='animate-fade-in mt-2 border border-white/60 bg-transparent py-3 px-8 text-xs sm:text-sm tracking-[0.2em] uppercase transition-all duration-300 hover:bg-white hover:text-black hover:border-white'
+              style={{ animationDelay: "0.5s" }}
+            >
+              Ver Catálogo
             </button>
           </Link>
         </div>
       </section>
 
-      <section className='flex p-5 md:p-10 bg-accentDarker w-full my-0 mx-auto relative overflow-hidden' id='AboutUs'>
-        <div className='flex gap-20 flex-row max-w-[1200px] my-0 mx-auto'>
-          <div className='flex flex-col max-w-[700px] z-20'>
-            <label className='text-background text-xl'>Sobre nós</label>
-            <h2 className='text-background text-3xl'>Temos fabricado produto diretamente da nossa casa</h2>
-            <p className='mt-4 text-background leading-7'>
-              Nosso Ateliê se propõe como missão oferecer produtos de artesanato com alto padrão de qualidade, que tenha
-              como base a criatividade , o trabalho focado nos detalhes e personalização das peças e também no design
-              que atenda aos diversos públicos.
-            </p>
-            <p className='mt-4 text-background leading-7'>
-              Temos uma visão: convertemos em uma empresa de referência na produção de artesanato em madeira e tecido,
-              que seja exemplo de qualidade diferenciada, preço justo e confiabilidade desde o projeto até a entrega do
-              produto.
-            </p>
-            <p className='mt-4 text-background leading-7'>
-              Todo nosso fazer está e sempre estará pautado em um conjunto de valores que nos norteiam:
-            </p>
-            <div className='grid sm:grid-cols-2 justify-items-center gap-2 grid-flow-row-dense'>
-              <div className='bg-background rounded-2xl min-h-32 flex items-center justify-center w-80 px-5 py-3'>
-                <p className='text-accentDarker leading-7'>
-                  <span className='font-bold'>1)</span> Oferecer a máxima qualidade nos produtos e focar na satisfação
-                  do cliente acima da rapidez e lucro nas vendas
-                </p>
-              </div>
-              <div className='bg-background rounded-2xl min-h-32 flex items-center justify-center w-80 px-5 py-3'>
-                <p className='text-accentDarker leading-7'>
-                  <span className='font-bold'>2)</span> Prioridade nas relações humanas baseadas na ética, na confiança
-                  e o respeito pelo cliente.
-                </p>
-              </div>
-              <div className='bg-background rounded-2xl min-h-32 flex items-center justify-center w-80 px-5 py-3'>
-                <p className='text-accentDarker leading-7'>
-                  <span className='font-bold'>3)</span> Responsabilidade Ambiental em toda a cadeia produtiva: desde os
-                  insumos, gasto de energia e materiais, e descarte de resíduos
-                </p>
-              </div>
-              <div className='bg-background rounded-2xl min-h-32 flex items-center justify-center w-80 px-5 py-3'>
-                <p className='text-accentDarker leading-7'>
-                  <span className='font-bold'>4)</span> Transparência em todo o processo produtivo incluindo as técnicas
-                  utilizadas e a possibilidade de ensino e treinamento de interessados.
-                </p>
+      {/* ── SOBRE NÓS ─────────────────────────────────────────────── */}
+      <section className='bg-accentDarker w-full overflow-hidden relative py-16 md:py-24' id='AboutUs'>
+        <div ref={aboutRef} className='max-w-[1200px] mx-auto px-5 md:px-10'>
+          <div className='flex flex-col lg:flex-row'>
+            <div
+              className={cn(
+                "flex flex-col max-w-[680px] z-20",
+                !aboutInView && "opacity-0",
+                aboutInView && "animate-fade-in-left"
+              )}
+            >
+              <span className='text-spotlight text-xs uppercase tracking-[0.25em] font-medium mb-3'>
+                Sobre nós
+              </span>
+              <h2 className='text-background text-2xl sm:text-3xl md:text-4xl font-light leading-snug mb-6'>
+                Temos fabricado produtos diretamente da nossa casa
+              </h2>
+              <p className='text-textBright leading-7 mb-4 text-sm sm:text-base'>
+                Nosso Ateliê se propõe como missão oferecer produtos de artesanato com alto padrão de qualidade, que
+                tenha como base a criatividade, o trabalho focado nos detalhes e personalização das peças e também no
+                design que atenda aos diversos públicos.
+              </p>
+              <p className='text-textBright leading-7 mb-4 text-sm sm:text-base'>
+                Nossa visão: nos tornarmos uma empresa de referência na produção de artesanato em madeira e tecido,
+                exemplo de qualidade diferenciada, preço justo e confiabilidade desde o projeto até a entrega.
+              </p>
+              <p className='text-textBright leading-7 mb-8 text-sm sm:text-base'>
+                Todo nosso fazer está pautado em valores que nos norteiam:
+              </p>
+
+              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                {aboutValues.map(({ num, text }, i) => (
+                  <div
+                    key={num}
+                    className={cn(
+                      "bg-background/[0.07] border border-background/[0.12] rounded-xl p-5",
+                      !aboutInView && "opacity-0",
+                      aboutInView && "animate-fade-in-up"
+                    )}
+                    style={{ animationDelay: aboutInView ? `${0.15 + i * 0.1}s` : undefined }}
+                  >
+                    <span className='text-spotlight text-xs font-bold tracking-widest block mb-2'>{num}</span>
+                    <p className='text-textBright text-sm leading-6'>{text}</p>
+                  </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Decorative image — right side, large screens only */}
+        <div
+          className='hidden lg:block absolute overflow-hidden w-[480px] z-10 top-0 right-0 h-full'
+          style={{
+            WebkitMask: "linear-gradient(to left, #000 35%, #0000)",
+            mask: "linear-gradient(to left, #000 35%, #0000)",
+          }}
+        >
+          <Image src={aboutUsImage} alt='' className='h-full w-full object-cover' />
+        </div>
+      </section>
+
+      {/* ── PRODUTOS ──────────────────────────────────────────────── */}
+      <section id='Products' className='py-12 md:py-20'>
+        <div ref={productsRef}>
+          <div className='border-b-2 border-accentDarker'>
+            <h2
+              className={cn(
+                "text-xl text-accentDarker text-center my-4 tracking-[0.2em]",
+                !productsInView && "opacity-0",
+                productsInView && "animate-fade-in"
+              )}
+            >
+              PRODUTOS
+            </h2>
           </div>
 
           <div
-            className='absolute overflow-hidden max-w-[800px] z-10 top-0 right-0'
-            style={{
-              WebkitMask: "linear-gradient(to left, #000, #0000)",
-              mask: "linear-gradient(to left, #000, #0000)",
-            }}
+            className={cn(
+              "max-w-[900px] px-5 md:px-10 mx-auto mt-12 mb-8 text-sm sm:text-base leading-7",
+              !productsInView && "opacity-0",
+              productsInView && "animate-fade-in-up"
+            )}
           >
-            <Image src={aboutUsImage} alt='' className='invisible sm:visible' />
+            <p>
+              Nosso Ateliê está especializado em peças artesanais feitas com{" "}
+              <span className='text-spotlight font-semibold'>madeira</span> e{" "}
+              <span className='text-spotlight font-semibold'>tecidos</span> de alta qualidade. Nossos produtos estão
+              dentro do conjunto de utensílios domésticos e empresariais, incorporando além da utilidade os traços da
+              beleza artística que os diferencia. Com técnicas auxiliares como gravação a{" "}
+              <span className='text-spotlight font-semibold'>laser</span>, personalizamos peças de acordo ao desejo do
+              cliente — de uma dedicatória a uma logomarca.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section id='Products'>
-        <div className='border-b-2 border-accentDarker'>
-          <h1 className='text-xl text-accentDarker text-center my-4 mx-0 tracking-widest'>PRODUTOS</h1>
-        </div>
-
-        <div className='max-w-[1000px] p-5 md:p-10 my-0 mx-auto mt-20 mb-0'>
-          <p>
-            Nosso Ateliê está especializao em peças artesanais feitas com{" "}
-            <span className='text-spotlight font-bold'>madeira</span> e{" "}
-            <span className='text-spotlight font-bold'>tecidos</span> de alta qualidade. Nossos produtos,
-            fundamentalmente, estão dentro do conjunto de utensílios domésticos e/ou empresariais, que incorporam além
-            da utilidade os traços da beleza artística que os diferencia. Além disso com técnicas auxiliares como
-            Gravação a <span className='text-spotlight font-bold'>Laser</span>, podemos oferecer o serviço de
-            personalizar as suas peças de acordo ao desejo do cliente, que pode ser desde a gravação de uma dedicatória
-            de um presente, uma foto familiar, assim como a logomarca de uma empresa.
-          </p>
-        </div>
-        <div className='my-16 mx-auto container'>
-          <div className='grid grid-rows-3 md:grid-cols-3 md:grid-rows-none gap-4 items-center justify-center mx-auto'>
-            <div className='cursor-pointer flex items-start justify-start flex-col max-w-[20rem] lg:max-w-[25rem] h-[25rem] bg-orange-100 overflow-hidden rounded-xl transition-all shadow-md hover:scale-105 hover:shadow-2xl'>
-              <div className='h-[220px]'>
-                <Image src={cloths} alt='' className='object-cover h-[220px]' />
-              </div>
-              <div className='px-5 py-5 h-full'>
-                <h1 className='self-start text-xl lg:text-2xl mb-1'>Tecidos</h1>
-                <p>
-                  Tecidos feitos com as melhores telas, feitos com maestria e amor de alguem apaixonado por artes
-                  manuais
-                </p>
-              </div>
-            </div>
-            <div className='cursor-pointer flex items-start justify-start flex-col max-w-[20rem] lg:max-w-[25rem] h-[25rem] bg-orange-100 overflow-hidden rounded-xl transition-all shadow-md hover:scale-105 hover:shadow-2xl'>
-              <div className='h-[220px]'>
-                <Image src={woodWorking} alt='' className='object-cover h-[220px]' />
-              </div>
-              <div className='px-5 py-5 h-full'>
-                <h1 className='self-start text-xl lg:text-2xl mb-1'>Marcenaria</h1>
-                <p>Trabalhos em madeira feitos com precisão e carinho. Produtos unicos variados de mar</p>
-              </div>
-            </div>
-            <div className='cursor-pointer flex items-start justify-start flex-col max-w-[20rem] lg:max-w-[25rem] h-[25rem] bg-orange-100 overflow-hidden rounded-xl transition-all shadow-md hover:scale-105 hover:shadow-2xl'>
-              <div className='h-[220px]'>
-                <Image src={laserWork} alt='' className='object-cover h-[220px]' />
-              </div>
-              <div className='px-5 py-5 h-full'>
-                <h1 className='self-start text-xl lg:text-2xl mb-1'>Trabalho com Laser</h1>
-                <p>Personalização de peças de diferentes materiais, utilizando um laser de alta precisão</p>
-              </div>
+          <div className='container mx-auto'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center'>
+              {productCards.map(({ src, title, desc, delay }) => (
+                <div
+                  key={title}
+                  className={cn(
+                    "cursor-pointer flex flex-col w-full max-w-sm bg-orange-100 overflow-hidden rounded-xl shadow-md transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl",
+                    !productsInView && "opacity-0",
+                    productsInView && "animate-fade-in-up"
+                  )}
+                  style={{ animationDelay: productsInView ? `${delay}s` : undefined }}
+                >
+                  <div className='w-full aspect-[4/3] relative overflow-hidden'>
+                    <Image src={src} alt={title} fill className='object-cover' />
+                  </div>
+                  <div className='px-5 py-5'>
+                    <h3 className='text-xl font-medium mb-2'>{title}</h3>
+                    <p className='text-sm leading-6 text-gray-700'>{desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── BANNER ────────────────────────────────────────────────── */}
       <div
-        className='flex flex-col justify-center items-center bg-center bg-no-repeat bg-blend-darken max-h-[300px] w-full max-w-[1920px] mx-auto overflow-hidden py-20'
+        ref={bannerRef}
+        className='flex flex-col justify-center items-center bg-center bg-no-repeat bg-cover w-full py-20 md:py-28 overflow-hidden'
         style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(${banner.src})`,
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url(${banner.src})`,
         }}
       >
-        <h1 className='text-white tracking-widest text-center my-0 mx-8 max-w-[1100px] text-2xl'>
-          {
-            "...buscamos ser uma empresa de referência na produção de artesanato em madeira e tecido, que seja exemplo de qualidade diferenciada, preço justo e confiabilidade desde o projeto até a entrega do produto. "
-          }
-        </h1>
+        <blockquote
+          className={cn(
+            "text-white tracking-wide text-center mx-5 md:mx-8 max-w-[900px] text-lg md:text-2xl font-light leading-relaxed",
+            !bannerInView && "opacity-0",
+            bannerInView && "animate-fade-in-up"
+          )}
+        >
+          &ldquo;...buscamos ser uma empresa de referência na produção de artesanato em madeira e tecido, que seja
+          exemplo de qualidade diferenciada, preço justo e confiabilidade desde o projeto até a entrega do produto.&rdquo;
+        </blockquote>
       </div>
 
-      <section id='Tecniques' className='pb-40'>
-        <div className='border-b-2 border-accentDarker'>
-          <h1 className='text-xl text-accentDarker text-center my-4 mx-0 tracking-widest'>TÉCNICAS</h1>
-        </div>
+      {/* ── TÉCNICAS ──────────────────────────────────────────────── */}
+      <section id='Tecniques' className='py-12 md:py-20 pb-24'>
+        <div ref={techniquesRef}>
+          <div className='border-b-2 border-accentDarker'>
+            <h2
+              className={cn(
+                "text-xl text-accentDarker text-center my-4 tracking-[0.2em]",
+                !techniquesInView && "opacity-0",
+                techniquesInView && "animate-fade-in"
+              )}
+            >
+              TÉCNICAS
+            </h2>
+          </div>
 
-        <div className='max-w-[1000px] mx-auto my-10 p-10'>
-          Nossa equipe ao trabalhar com artesanato criativo, está constantemente acrescentando novas ideias, gabaritos e
-          técnicas para atingir a perfeição em cada peça. E como parte de nossa filosofia presa pela transparência,
-          estamos comprometidos com além de oferecer produtos de alto padrão de qualidade, também mostrar um pouco do
-          “como o fazemos”, e quais técnicas e ferramentas utilizamos. Desta forma aos poucos iremos apresentando nossa
-          jornada de trabalho e criação em nossos projetos. De forma resumida nosso know out atual o expomos a seguir
-        </div>
+          <div
+            className={cn(
+              "max-w-[900px] mx-auto my-10 px-5 md:px-10 text-sm sm:text-base leading-7",
+              !techniquesInView && "opacity-0",
+              techniquesInView && "animate-fade-in-up"
+            )}
+          >
+            Nossa equipe está constantemente acrescentando novas ideias, gabaritos e técnicas para atingir a perfeição em
+            cada peça. Como parte de nossa filosofia de transparência, estamos comprometidos em mostrar um pouco do &ldquo;como
+            o fazemos&rdquo; e quais ferramentas utilizamos. De forma resumida, nosso know-how atual:
+          </div>
 
-        <div className=' container mx-auto max-w-[35rem] '>
-          <Carousel className='w-full overflow-visible'>
-            <CarouselContent className='overflow-visible h-[600px] flex items-center'>
-              <CarouselItem>
-                <div className='flex items-center cursor-pointer flex-col max-w-[35rem] max-h-[200rem] overflow-hidden min-h-[32rem] bg-orange-100 rounded-xl transition-all shadow-md hover:border-2 hover:border-spotlight box-content'>
-                  <div className='overflow-hidden max-h-64 relative'>
-                    <span className='absolute text-white bg-spotlight text-2x font-bold text-xl top-[30px] px-4 py-2 tracking-widest '>
-                      MARCENARIA
-                    </span>
-                    <Image src={background2} alt='' width={1000} />
-                  </div>
-                  <section className='p-5 flex gap-5'>
-                    <Image src={woodWorkingIcon} alt='' width={120} className='object-scale-down' />
-                    <div>
-                      <h1 className='items-start text-2xl my-2'>Marchetaria</h1>
-                      <p>
-                        Trabalhos em madeira de diferentes tonalidade para tornar cada peça unica e elegante. Toda a
-                        colagem e marcheteria é feita com cola Titebond 3 resistente a água e não toxica, para poder ser
-                        utilizada com alimentos.{" "}
-                      </p>
+          <div
+            className={cn(
+              "container mx-auto max-w-[600px]",
+              !techniquesInView && "opacity-0",
+              techniquesInView && "animate-fade-in-up"
+            )}
+            style={{ animationDelay: techniquesInView ? "0.2s" : undefined }}
+          >
+            <Carousel className='w-full'>
+              <CarouselContent>
+                <CarouselItem>
+                  <div className='flex flex-col bg-orange-100 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl border-2 border-transparent hover:border-spotlight cursor-pointer'>
+                    <div className='relative'>
+                      <span className='absolute text-white bg-spotlight font-semibold text-xs tracking-widest top-4 left-0 px-4 py-1.5 z-10'>
+                        MARCENARIA
+                      </span>
+                      <div className='aspect-[16/9] relative'>
+                        <Image src={background2} alt='Marchetaria' fill className='object-cover' />
+                      </div>
                     </div>
-                  </section>
-                </div>
-              </CarouselItem>
-              <CarouselItem>
-                <div className='flex items-center cursor-pointer flex-col max-w-[35rem] max-h-[200rem] overflow-hidden min-h-[32rem] bg-orange-100 rounded-xl transition-all shadow-md hover:border-2 hover:border-spotlight box-content'>
-                  <div className='overflow-hidden max-h-64 relative'>
-                    <span className='absolute text-white bg-spotlight text-2x font-bold text-xl top-[30px] px-4 py-2 tracking-widest '>
-                      MARCENARIA
-                    </span>
-                    <Image src={background2} alt='' width={1000} />
-                  </div>
-                  <section className='p-5 flex gap-5'>
-                    <Image src={woodWorkingIcon} alt='' width={120} className='object-scale-down' />
-                    <div>
-                      <h1 className='items-start text-2xl my-2'>Inlay</h1>
-                      <p>
-                        Incrustaçao de desenhos de madeiras de diferentes tonalidades. O acabamento é feito com oleo
-                        mineral e cera de abelha q sao os apropiados paracontato direto com alimentos.{" "}
-                      </p>
+                    <div className='p-5 flex gap-5'>
+                      <Image
+                        src={woodWorkingIcon}
+                        alt=''
+                        width={72}
+                        className='object-scale-down flex-shrink-0 self-start mt-1'
+                      />
+                      <div>
+                        <h3 className='text-xl font-semibold mb-2'>Marchetaria</h3>
+                        <p className='text-sm leading-6 text-gray-700'>
+                          Trabalhos em madeira de diferentes tonalidades para tornar cada peça única e elegante. A
+                          colagem é feita com cola Titebond 3, resistente à água e não tóxica, apta para contato com
+                          alimentos.
+                        </p>
+                      </div>
                     </div>
-                  </section>
-                </div>
-              </CarouselItem>
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+                  </div>
+                </CarouselItem>
+
+                <CarouselItem>
+                  <div className='flex flex-col bg-orange-100 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl border-2 border-transparent hover:border-spotlight cursor-pointer'>
+                    <div className='relative'>
+                      <span className='absolute text-white bg-spotlight font-semibold text-xs tracking-widest top-4 left-0 px-4 py-1.5 z-10'>
+                        MARCENARIA
+                      </span>
+                      <div className='aspect-[16/9] relative'>
+                        <Image src={background2} alt='Inlay' fill className='object-cover' />
+                      </div>
+                    </div>
+                    <div className='p-5 flex gap-5'>
+                      <Image
+                        src={woodWorkingIcon}
+                        alt=''
+                        width={72}
+                        className='object-scale-down flex-shrink-0 self-start mt-1'
+                      />
+                      <div>
+                        <h3 className='text-xl font-semibold mb-2'>Inlay</h3>
+                        <p className='text-sm leading-6 text-gray-700'>
+                          Incrustação de desenhos em madeiras de diferentes tonalidades. O acabamento é feito com óleo
+                          mineral e cera de abelha, aprovados para contato direto com alimentos.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+
+              {/* Inline navigation row: ← dots → */}
+              <div className='flex items-center justify-center gap-4 mt-6'>
+                <CarouselPrevious className='static translate-y-0' />
+                <CarouselDots />
+                <CarouselNext className='static translate-y-0' />
+              </div>
+            </Carousel>
+          </div>
         </div>
       </section>
     </div>
