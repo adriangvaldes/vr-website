@@ -18,7 +18,7 @@ type Product = {
 type FilterPanelProps = {
   openCategories: Record<number, boolean>;
   toggleCategory: (id: number) => void;
-  subCategory: number[];
+  selectedSubItems: Set<string>;
   handleSelectSubCategory: (
     checked: boolean,
     categoryValue: number,
@@ -59,7 +59,7 @@ const CATEGORY_LABELS: Record<number, string> = {
 function FilterPanel({
   openCategories,
   toggleCategory,
-  subCategory,
+  selectedSubItems,
   handleSelectSubCategory,
 }: FilterPanelProps) {
   return (
@@ -86,7 +86,9 @@ function FilterPanel({
           {openCategories[cat.id] && (
             <div className='pb-2'>
               {cat.items.map((item) => {
-                const isChecked = subCategory.includes(item.id);
+                // Use compound key "catId-subId" to avoid false positives
+                // when two categories share the same numeric sub-item ID.
+                const isChecked = selectedSubItems.has(`${cat.id}-${item.id}`);
                 return (
                   <label
                     key={item.id}
@@ -149,21 +151,22 @@ function FilterPanel({
 // ── ProductCard ────────────────────────────────────────────────────────
 function ProductCard({ product }: { product: Product }) {
   return (
-    <div className='group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer'>
-      {/* Image area */}
-      <div className='relative aspect-[4/5] overflow-hidden'>
+    <div className='group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer'>
+      {/* Image area — overflow-hidden lives on the outer card only,
+          so the hover scale is clipped there without extra stacking contexts. */}
+      <div className='relative w-full aspect-[4/5]'>
         <Image
           src={product.imageUrl}
           alt={product.name}
           fill
           className='object-cover transition-transform duration-500 group-hover:scale-[1.05]'
-          sizes='(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw'
+          sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
         />
         {/* Hover overlay */}
         <div className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300' />
         {/* Category badge */}
         {CATEGORY_LABELS[product.category] && (
-          <span className='absolute top-2.5 left-2.5 bg-accentDarker/75 backdrop-blur-sm text-background text-xs px-2.5 py-1 rounded-md tracking-wide font-medium'>
+          <span className='absolute top-2.5 left-2.5 bg-accentDarker/80 text-background text-xs px-2.5 py-1 rounded-md tracking-wide font-medium'>
             {CATEGORY_LABELS[product.category]}
           </span>
         )}
@@ -223,6 +226,9 @@ export default function Catalog() {
   const [openCategories, setOpenCategories] = useState<Record<number, boolean>>({ 1: true });
   const [category, setCategory] = useState<number[]>([]);
   const [subCategory, setSubCategory] = useState<number[]>([]);
+  // Tracks selections as "catId-subId" strings so checkboxes across
+  // different categories with the same numeric subId don't conflict.
+  const [selectedSubItems, setSelectedSubItems] = useState<Set<string>>(new Set());
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -231,12 +237,21 @@ export default function Catalog() {
     setOpenCategories((prev) => ({ ...prev, [id]: !prev[id] }));
   }
 
-  // Filter logic preserved from original implementation
+  // Filter logic: original Firebase query state preserved exactly.
+  // selectedSubItems is maintained in parallel only for checkbox display.
   function handleSelectSubCategory(
     checked: boolean,
     categoryValue: number,
     subCategoryValue: number
   ) {
+    const key = `${categoryValue}-${subCategoryValue}`;
+
+    setSelectedSubItems((prev) => {
+      const next = new Set(prev);
+      checked ? next.add(key) : next.delete(key);
+      return next;
+    });
+
     setSubCategory((prev) =>
       checked ? [...prev, subCategoryValue] : prev.filter((el) => el !== subCategoryValue)
     );
@@ -265,7 +280,7 @@ export default function Catalog() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subCategory]);
 
-  const selectedCount = subCategory.length;
+  const selectedCount = selectedSubItems.size;
 
   return (
     <div className='min-h-screen bg-background'>
@@ -320,7 +335,7 @@ export default function Catalog() {
               <FilterPanel
                 openCategories={openCategories}
                 toggleCategory={toggleCategory}
-                subCategory={subCategory}
+                selectedSubItems={selectedSubItems}
                 handleSelectSubCategory={handleSelectSubCategory}
               />
             </div>
@@ -345,7 +360,7 @@ export default function Catalog() {
               <FilterPanel
                 openCategories={openCategories}
                 toggleCategory={toggleCategory}
-                subCategory={subCategory}
+                selectedSubItems={selectedSubItems}
                 handleSelectSubCategory={handleSelectSubCategory}
               />
             </div>
