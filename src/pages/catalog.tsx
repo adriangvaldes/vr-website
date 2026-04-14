@@ -159,8 +159,8 @@ function ProductCard({ product }: { product: Product }) {
           src={product.imageUrl}
           alt={product.name}
           fill
+          unoptimized
           className='object-cover transition-transform duration-500 group-hover:scale-[1.05]'
-          sizes='(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
         />
         {/* Hover overlay */}
         <div className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300' />
