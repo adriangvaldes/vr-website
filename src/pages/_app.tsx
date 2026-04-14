@@ -5,9 +5,6 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import vrBranco from "../assets/vrBranco.png";
 import "../global.css";
-import { globalStyles } from "../styles/globat";
-
-globalStyles();
 
 const navLinks = [
   { href: "/", label: "Home" },
