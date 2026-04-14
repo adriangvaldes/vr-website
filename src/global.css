@@ -1,25 +1,95 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ── Dark mode via .dark class ───────────────────────────────────── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Static brand tokens ─────────────────────────────────────────── */
+@theme {
+  /* Brand palette */
+  --color-background:    #faf4eb;
+  --color-accentDarker:  #1f0e04;
+  --color-spotlight:     #e3573b;
+  --color-spotlight-dark: #c9432a;
+  --color-textBright:    #d7cdbe;
+  --color-textGrey:      #c6c0b8;
+
+  /* Border radius */
+  --radius-lg: 0.5rem;
+  --radius-md: calc(0.5rem - 2px);
+  --radius-sm: calc(0.5rem - 4px);
+
+  /* Custom entrance animations */
+  --animate-fade-in-up:    fade-in-up 0.65s ease-out both;
+  --animate-fade-in:       fade-in 0.65s ease-out both;
+  --animate-fade-in-left:  fade-in-left 0.65s ease-out both;
+  --animate-fade-in-right: fade-in-right 0.65s ease-out both;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up:   accordion-up 0.2s ease-out;
+}
+
+/* ── shadcn/ui CSS-variable-driven tokens ────────────────────────── */
+@theme inline {
+  --color-border:                hsl(var(--border));
+  --color-input:                 hsl(var(--input));
+  --color-ring:                  hsl(var(--ring));
+  --color-foreground:            hsl(var(--foreground));
+  --color-primary:               hsl(var(--primary));
+  --color-primary-foreground:    hsl(var(--primary-foreground));
+  --color-secondary:             hsl(var(--secondary));
+  --color-secondary-foreground:  hsl(var(--secondary-foreground));
+  --color-destructive:           hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted:                 hsl(var(--muted));
+  --color-muted-foreground:      hsl(var(--muted-foreground));
+  --color-accent:                hsl(var(--accent));
+  --color-accent-foreground:     hsl(var(--accent-foreground));
+  --color-popover:               hsl(var(--popover));
+  --color-popover-foreground:    hsl(var(--popover-foreground));
+  --color-card:                  hsl(var(--card));
+  --color-card-foreground:       hsl(var(--card-foreground));
+}
+
+/* ── Keyframes ───────────────────────────────────────────────────── */
+@keyframes fade-in-up {
+  0%   { opacity: 0; transform: translateY(32px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fade-in-left {
+  0%   { opacity: 0; transform: translateX(-32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes fade-in-right {
+  0%   { opacity: 0; transform: translateX(32px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+/* ── Design System — CSS runtime variables ───────────────────────── */
+/*
+ * Used by shadcn/ui components.
+ * Brand hex references:
+ *   warm cream   #faf4eb → HSL 43 60% 95%
+ *   dark brown   #230f04 → HSL 18 77% 8%
+ *   darker brown #1f0e04 → HSL 18 80% 7%
+ *   spotlight    #e3573b → HSL 12 74% 56%
+ *   text bright  #d7cdbe → HSL 33 21% 74%
+ *   text grey    #c6c0b8 → HSL 28  9% 74%
+ */
 @layer base {
   :root {
-    /*
-     * Design System — CSS variables aligned to the brand palette.
-     * Used by shadcn/ui components. The brand colors themselves are
-     * also set as static Tailwind tokens in tailwind.config.js.
-     *
-     * Brand hex references:
-     *   warm cream   #faf4eb → HSL 43 60% 95%
-     *   dark brown   #230f04 → HSL 18 77% 8%
-     *   darker brown #1f0e04 → HSL 18 80% 7%
-     *   spotlight    #e3573b → HSL 12 74% 56%
-     *   text bright  #d7cdbe → HSL 33 21% 74%
-     *   text grey    #c6c0b8 → HSL 28  9% 74%
-     */
-
-    --background:          43 60% 95%;   /* warm cream */
-    --foreground:          18 77%  8%;   /* dark brown */
+    --background:          43 60% 95%;
+    --foreground:          18 77%  8%;
 
     --card:                43 60% 95%;
     --card-foreground:     18 77%  8%;
@@ -27,16 +97,16 @@
     --popover:             43 60% 95%;
     --popover-foreground:  18 77%  8%;
 
-    --primary:             18 80%  7%;   /* darkest brown — primary buttons */
+    --primary:             18 80%  7%;
     --primary-foreground:  43 60% 95%;
 
-    --secondary:           33 21% 83%;   /* warm light grey */
-    --secondary-foreground:18 77%  8%;
+    --secondary:           33 21% 83%;
+    --secondary-foreground: 18 77%  8%;
 
     --muted:               33 21% 83%;
     --muted-foreground:    28 12% 50%;
 
-    --accent:              33 21% 87%;   /* slightly lighter warm grey for hover states */
+    --accent:              33 21% 87%;
     --accent-foreground:   18 77%  8%;
 
     --destructive:          0 84% 60%;
@@ -63,7 +133,7 @@
     --primary-foreground:  18 80%  7%;
 
     --secondary:           18 50% 15%;
-    --secondary-foreground:43 60% 95%;
+    --secondary-foreground: 43 60% 95%;
 
     --muted:               18 50% 15%;
     --muted-foreground:    33 21% 65%;
@@ -72,19 +142,28 @@
     --accent-foreground:   43 60% 95%;
 
     --destructive:          0 63% 31%;
-    --destructive-foreground:43 60% 95%;
+    --destructive-foreground: 43 60% 95%;
 
     --border:              18 50% 15%;
     --input:               18 50% 15%;
     --ring:                33 21% 78%;
   }
-}
 
-@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+  }
+  input, textarea, button, select {
+    font-family: inherit;
+    font-weight: inherit;
   }
 }
