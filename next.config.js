@@ -1,20 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Static export for Firebase Hosting
+  output: 'export',
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        pathname: '/v0/b/**',
-      },
-    ],
-    minimumCacheTTL: 1500000,
+    // Required for static export — optimization server doesn't exist
+    // in a static build. Firebase Storage images already use unoptimized
+    // at the component level; this covers local images too.
+    unoptimized: true,
   },
   compiler: {
-    removeConsole: false,
+    removeConsole: true,
   },
-  swcMinify: true
 }
 
 module.exports = nextConfig

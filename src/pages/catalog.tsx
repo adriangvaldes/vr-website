@@ -19,11 +19,7 @@ type FilterPanelProps = {
   openCategories: Record<number, boolean>;
   toggleCategory: (id: number) => void;
   selectedSubItems: Set<string>;
-  handleSelectSubCategory: (
-    checked: boolean,
-    categoryValue: number,
-    subCategoryValue: number
-  ) => void;
+  handleSelectSubCategory: (checked: boolean, categoryValue: number, subCategoryValue: number) => void;
 };
 
 // ── Static data ────────────────────────────────────────────────────────
@@ -56,12 +52,7 @@ const CATEGORY_LABELS: Record<number, string> = {
 };
 
 // ── FilterPanel ────────────────────────────────────────────────────────
-function FilterPanel({
-  openCategories,
-  toggleCategory,
-  selectedSubItems,
-  handleSelectSubCategory,
-}: FilterPanelProps) {
+function FilterPanel({ openCategories, toggleCategory, selectedSubItems, handleSelectSubCategory }: FilterPanelProps) {
   return (
     <div className='py-2'>
       {FILTER_CATEGORIES.map((cat) => (
@@ -75,73 +66,59 @@ function FilterPanel({
             <span className='text-sm font-medium tracking-wide'>{cat.label}</span>
             <ChevronDown
               size={14}
-              className={cn(
-                "text-textGrey transition-transform duration-200",
-                openCategories[cat.id] && "rotate-180"
-              )}
+              className={cn("text-textGrey transition-transform duration-200", openCategories[cat.id] && "rotate-180")}
             />
           </button>
 
           {/* Accordion items */}
-          {openCategories[cat.id] && (
-            <div className='pb-2'>
-              {cat.items.map((item) => {
-                // Use compound key "catId-subId" to avoid false positives
-                // when two categories share the same numeric sub-item ID.
-                const isChecked = selectedSubItems.has(`${cat.id}-${item.id}`);
-                return (
-                  <label
-                    key={item.id}
-                    className='flex items-center gap-3 px-5 py-2 cursor-pointer group'
-                  >
-                    <input
-                      type='checkbox'
-                      className='sr-only'
-                      checked={isChecked}
-                      onChange={(e) =>
-                        handleSelectSubCategory(e.target.checked, cat.id, item.id)
-                      }
-                    />
-                    {/* Custom checkbox */}
-                    <span
-                      className={cn(
-                        "w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center transition-colors duration-150",
-                        isChecked
-                          ? "bg-spotlight border-spotlight"
-                          : "border-background/30 group-hover:border-background/55"
-                      )}
-                    >
-                      {isChecked && (
-                        <svg
-                          viewBox='0 0 10 10'
-                          className='w-2.5 h-2.5 text-white'
-                          fill='none'
-                        >
-                          <path
-                            d='M1.5 5l2.5 2.5 4.5-4.5'
-                            stroke='currentColor'
-                            strokeWidth='1.8'
-                            strokeLinecap='round'
-                            strokeLinejoin='round'
-                          />
-                        </svg>
-                      )}
-                    </span>
-                    <span
-                      className={cn(
-                        "text-sm transition-colors",
-                        isChecked
-                          ? "text-background"
-                          : "text-textGrey group-hover:text-textBright"
-                      )}
-                    >
-                      {item.label}
-                    </span>
-                  </label>
-                );
-              })}
+          <div className={cn("grid transition-all duration-300 ease-in-out", openCategories[cat.id] ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}>
+            <div className='overflow-hidden'>
+              <div className='pb-2'>
+                {cat.items.map((item) => {
+                  const isChecked = selectedSubItems.has(`${cat.id}-${item.id}`);
+                  return (
+                    <label key={item.id} className='flex items-center gap-3 px-5 py-2 cursor-pointer group'>
+                      <input
+                        type='checkbox'
+                        className='sr-only'
+                        checked={isChecked}
+                        onChange={(e) => handleSelectSubCategory(e.target.checked, cat.id, item.id)}
+                      />
+                      {/* Custom checkbox */}
+                      <span
+                        className={cn(
+                          "w-4 h-4 rounded border-2 flex-shrink-0 flex items-center justify-center transition-colors duration-150",
+                          isChecked
+                            ? "bg-spotlight border-spotlight"
+                            : "border-background/30 group-hover:border-background/55",
+                        )}
+                      >
+                        {isChecked && (
+                          <svg viewBox='0 0 10 10' className='w-2.5 h-2.5 text-white' fill='none'>
+                            <path
+                              d='M1.5 5l2.5 2.5 4.5-4.5'
+                              stroke='currentColor'
+                              strokeWidth='1.8'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                            />
+                          </svg>
+                        )}
+                      </span>
+                      <span
+                        className={cn(
+                          "text-sm transition-colors",
+                          isChecked ? "text-background" : "text-textGrey group-hover:text-textBright",
+                        )}
+                      >
+                        {item.label}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
             </div>
-          )}
+          </div>
         </div>
       ))}
     </div>
@@ -150,18 +127,33 @@ function FilterPanel({
 
 // ── ProductCard ────────────────────────────────────────────────────────
 function ProductCard({ product }: { product: Product }) {
+  const [imgError, setImgError] = useState(false);
+  const showImage = product.imageUrl && !imgError;
+
   return (
     <div className='group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer'>
       {/* Image area — overflow-hidden lives on the outer card only,
           so the hover scale is clipped there without extra stacking contexts. */}
-      <div className='relative w-full aspect-[4/5]'>
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          fill
-          unoptimized
-          className='object-cover transition-transform duration-500 group-hover:scale-[1.05]'
-        />
+      <div className='relative w-full aspect-[4/5] bg-gray-100'>
+        {showImage ? (
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            fill
+            unoptimized
+            sizes='(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw'
+            onError={() => setImgError(true)}
+            className='object-cover transition-transform duration-500 group-hover:scale-[1.05]'
+          />
+        ) : (
+          <div className='absolute inset-0 flex items-center justify-center text-gray-300'>
+            <svg viewBox='0 0 24 24' className='w-12 h-12' fill='none' stroke='currentColor' strokeWidth={1}>
+              <rect x='3' y='3' width='18' height='18' rx='2' />
+              <circle cx='8.5' cy='8.5' r='1.5' />
+              <path d='M21 15l-5-5L5 21' />
+            </svg>
+          </div>
+        )}
         {/* Hover overlay */}
         <div className='absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300' />
         {/* Category badge */}
@@ -174,9 +166,7 @@ function ProductCard({ product }: { product: Product }) {
 
       {/* Info area */}
       <div className='p-3 md:p-4'>
-        <h3 className='font-medium text-accentDarker text-sm leading-snug mb-1.5 line-clamp-2'>
-          {product.name}
-        </h3>
+        <h3 className='font-medium text-accentDarker text-sm leading-snug mb-1.5 line-clamp-2'>{product.name}</h3>
         <p className='text-spotlight font-semibold text-sm md:text-base'>
           R${" "}
           {typeof product.price === "number"
@@ -211,9 +201,7 @@ function EmptyState() {
   return (
     <div className='flex flex-col items-center justify-center py-28 text-center'>
       <PackageOpen size={52} className='text-accentDarker/20 mb-5' />
-      <h3 className='text-lg font-medium text-accentDarker mb-2'>
-        Nenhum produto encontrado
-      </h3>
+      <h3 className='text-lg font-medium text-accentDarker mb-2'>Nenhum produto encontrado</h3>
       <p className='text-sm text-gray-400 max-w-xs leading-6'>
         Tente ajustar ou remover os filtros para encontrar o que procura.
       </p>
@@ -239,11 +227,7 @@ export default function Catalog() {
 
   // Filter logic: original Firebase query state preserved exactly.
   // selectedSubItems is maintained in parallel only for checkbox display.
-  function handleSelectSubCategory(
-    checked: boolean,
-    categoryValue: number,
-    subCategoryValue: number
-  ) {
+  function handleSelectSubCategory(checked: boolean, categoryValue: number, subCategoryValue: number) {
     const key = `${categoryValue}-${subCategoryValue}`;
 
     setSelectedSubItems((prev) => {
@@ -252,13 +236,9 @@ export default function Catalog() {
       return next;
     });
 
-    setSubCategory((prev) =>
-      checked ? [...prev, subCategoryValue] : prev.filter((el) => el !== subCategoryValue)
-    );
+    setSubCategory((prev) => (checked ? [...prev, subCategoryValue] : prev.filter((el) => el !== subCategoryValue)));
     setCategory((prev) =>
-      !checked && subCategory.length - 1 === 0
-        ? [...prev, categoryValue]
-        : prev.filter((el) => el !== categoryValue)
+      !checked && subCategory.length - 1 === 0 ? [...prev, categoryValue] : prev.filter((el) => el !== categoryValue),
     );
   }
 
@@ -284,7 +264,6 @@ export default function Catalog() {
 
   return (
     <div className='min-h-screen bg-background'>
-
       {/* ── PAGE HEADER ─────────────────────────────────────────── */}
       <div
         className='relative flex flex-col items-center justify-center h-48 md:h-60 w-full bg-center bg-cover overflow-hidden'
@@ -292,9 +271,7 @@ export default function Catalog() {
           backgroundImage: `linear-gradient(rgba(0,0,0,0.62), rgba(0,0,0,0.62)), url(${banner.src})`,
         }}
       >
-        <h1 className='text-background text-3xl md:text-4xl font-light tracking-[0.35em] mb-2'>
-          CATÁLOGO
-        </h1>
+        <h1 className='text-background text-3xl md:text-4xl font-light tracking-[0.35em] mb-2'>CATÁLOGO</h1>
         <p className='text-textGrey text-sm tracking-wider'>
           {loading
             ? "Carregando produtos..."
@@ -304,7 +281,6 @@ export default function Catalog() {
 
       {/* ── MAIN LAYOUT ─────────────────────────────────────────── */}
       <div className='max-w-[1440px] mx-auto px-4 md:px-8 py-8 md:py-10'>
-
         {/* Mobile: collapsible filter bar */}
         <div className='md:hidden mb-5'>
           <button
@@ -323,23 +299,22 @@ export default function Catalog() {
             </span>
             <ChevronDown
               size={14}
-              className={cn(
-                "text-textGrey transition-transform duration-200",
-                filtersOpen && "rotate-180"
-              )}
+              className={cn("text-textGrey transition-transform duration-200", filtersOpen && "rotate-180")}
             />
           </button>
 
-          {filtersOpen && (
-            <div className='mt-2 bg-accentDarker rounded-xl overflow-hidden'>
-              <FilterPanel
-                openCategories={openCategories}
-                toggleCategory={toggleCategory}
-                selectedSubItems={selectedSubItems}
-                handleSelectSubCategory={handleSelectSubCategory}
-              />
+          <div className={cn("grid transition-all duration-300 ease-in-out", filtersOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]")}>
+            <div className='overflow-hidden'>
+              <div className='mt-2 bg-accentDarker rounded-xl overflow-hidden'>
+                <FilterPanel
+                  openCategories={openCategories}
+                  toggleCategory={toggleCategory}
+                  selectedSubItems={selectedSubItems}
+                  handleSelectSubCategory={handleSelectSubCategory}
+                />
+              </div>
             </div>
-          )}
+          </div>
         </div>
 
         <div className='flex gap-7'>
@@ -348,9 +323,7 @@ export default function Catalog() {
             <div className='bg-accentDarker rounded-xl overflow-hidden sticky top-24'>
               <div className='flex items-center gap-2 px-4 py-3.5 border-b border-white/10'>
                 <SlidersHorizontal size={13} className='text-textGrey' />
-                <span className='text-background text-xs font-semibold tracking-[0.15em] uppercase'>
-                  Filtros
-                </span>
+                <span className='text-background text-xs font-semibold tracking-[0.15em] uppercase'>Filtros</span>
                 {selectedCount > 0 && (
                   <span className='ml-auto bg-spotlight text-white text-xs px-2 py-0.5 rounded-full leading-none'>
                     {selectedCount}
